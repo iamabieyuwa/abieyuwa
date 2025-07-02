@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { HomeIcon, BriefcaseIcon, UserIcon, EnvelopeIcon } from "@heroicons/react/24/outline";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
@@ -8,12 +8,51 @@ import clsx from "clsx";
 const navLinks = [
   { name: "Home", href: "#home", icon: HomeIcon },
   { name: "About", href: "#about", icon: UserIcon },
-   { name: "Projects", href: "#projects", icon: BriefcaseIcon },
+  { name: "Projects", href: "#projects", icon: BriefcaseIcon },
   { name: "Contact", href: "#contact", icon: EnvelopeIcon },
 ];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState(navLinks[0].href);
+
+  // Update active state on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 80; // Offset for navbar height
+      let currentActive = navLinks[0].href;
+
+      for (let i = 0; i < navLinks.length; i++) {
+        const section = document.querySelector(navLinks[i].href);
+        if (section) {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.offsetHeight;
+          if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            currentActive = navLinks[i].href;
+            break;
+          }
+        }
+      }
+      setActive(currentActive);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    // Initial check in case page is not at top
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Desktop Nav styling for active link
+  const activeDesktop =
+    "text-pink-400 font-bold after:absolute after:left-0 after:-bottom-0.5 after:w-full after:h-0.5 after:bg-pink-400 after:rounded-full after:scale-x-100";
+  const inactiveDesktop =
+    "text-white text-base font-medium group relative py-1 px-2 transition";
+
+  // Mobile Nav styling for active link
+  const activeMobile =
+    "text-pink-400 font-bold after:absolute after:left-0 after:-bottom-0.5 after:w-full after:h-0.5 after:bg-pink-400 after:rounded-full after:scale-x-100";
+  const inactiveMobile =
+    "text-white text-lg font-medium py-2 px-2 rounded-lg group relative transition";
 
   return (
     <motion.nav
@@ -36,17 +75,27 @@ export default function Navbar() {
             <li key={name}>
               <motion.a
                 href={href}
-                className="flex items-center gap-2 text-white text-base font-medium group relative py-1 px-2 transition"
+                className={clsx(
+                  "flex items-center gap-2 group relative py-1 px-2 transition",
+                  active === href ? activeDesktop : inactiveDesktop
+                )}
                 whileHover={{
                   scale: 1.08,
                   transition: { type: "spring", stiffness: 350, damping: 18 },
                 }}
                 tabIndex={0}
               >
-                <Icon className="h-5 w-5 opacity-80" />
+                <Icon className={clsx("h-5 w-5 opacity-80", active === href ? "text-pink-400" : "text-white")} />
                 <span className="tracking-wide">{name}</span>
                 {/* Underline animation */}
-                <span className="absolute left-0 -bottom-0.5 w-full h-0.5 bg-white/80 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 rounded-full" />
+                <span
+                  className={clsx(
+                    "absolute left-0 -bottom-0.5 w-full h-0.5 rounded-full origin-left transition-transform duration-300",
+                    active === href
+                      ? "bg-pink-400 scale-x-100"
+                      : "bg-white/80 scale-x-0 group-hover:scale-x-100"
+                  )}
+                />
               </motion.a>
             </li>
           ))}
@@ -86,7 +135,10 @@ export default function Navbar() {
                 <li key={name}>
                   <motion.a
                     href={href}
-                    className="flex items-center gap-3 text-white text-lg font-medium py-2 px-2 rounded-lg group relative transition"
+                    className={clsx(
+                      "flex items-center gap-3 group relative",
+                      active === href ? activeMobile : inactiveMobile
+                    )}
                     onClick={() => setOpen(false)}
                     whileHover={{
                       scale: 1.06,
@@ -94,9 +146,16 @@ export default function Navbar() {
                     }}
                     tabIndex={0}
                   >
-                    <Icon className="h-6 w-6 opacity-80" />
+                    <Icon className={clsx("h-6 w-6 opacity-80", active === href ? "text-pink-400" : "text-white")} />
                     <span className="tracking-wide">{name}</span>
-                    <span className="absolute left-0 -bottom-0.5 w-full h-0.5 bg-white/80 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 rounded-full" />
+                    <span
+                      className={clsx(
+                        "absolute left-0 -bottom-0.5 w-full h-0.5 rounded-full origin-left transition-transform duration-300",
+                        active === href
+                          ? "bg-pink-400 scale-x-100"
+                          : "bg-white/80 scale-x-0 group-hover:scale-x-100"
+                      )}
+                    />
                   </motion.a>
                 </li>
               ))}
