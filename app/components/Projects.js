@@ -9,98 +9,82 @@ import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
+import Airbnb from './images/Airbnb.png';
+import Hulu from './images/Hulu.png';
+import Portfolio from './images/Portfolio.png';
+import TicTacToe from './images/TicTacToe.jpeg';
+import Investment from './images/Investment.jpeg';
+import Amazon from './images/Amazon.jpg';
+import Dozewell from './images/Dozewell.jpg';
 
-// Example project data
 const projects = [
   {
-    name: "E-commerce Store",
+    name: "Airbnb Clone (Frontend Only)",
     description:
-      "A full-featured e-commerce store with product search, cart, checkout, and admin dashboard. Powered by Next.js, Stripe, MongoDB, and Chakra UI.",
-    tags: ["Next.js", "MongoDB", "Stripe"],
-    image: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=600&q=80",
+      "A responsive Airbnb homepage clone built with React and CSS. Features modern styled cards and a calendar attribute.",
+    tags: ["React", "CSS", "Frontend"],
+    image: Airbnb,
     github: "#",
-    demo: "#"
+    demo: "https://airbnb-cl0ne.web.app/",
+    githubDisabled: true
   },
   {
-    name: "Dev Blog Platform",
+    name: "Hulu Clone (Movie API)",
     description:
-      "A beautifully designed blogging platform for developers. Features markdown support, syntax highlighting, authentication, and custom themes. Built with Next.js, Prisma, and PostgreSQL.",
-    tags: ["Next.js", "Prisma", "PostgreSQL", "Markdown"],
-    image: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80",
+      "A Hulu clone with a movie search powered by a public API. Browse or search films instantly in a smooth React and CSS interface.",
+    tags: ["React", "CSS", "Movie API", "Search"],
+    image: Hulu,
     github: "#",
-    demo: "#"
-  },
-  {
-    name: "Weather Dashboard",
-    description:
-      "An interactive weather dashboard that provides real-time weather data, forecasts, and beautiful weather-based backgrounds using the OpenWeather API and Chart.js.",
-    tags: ["React", "Chart.js", "OpenWeather API"],
-    image: "https://images.unsplash.com/photo-1465101178521-c1a9136a3f77?auto=format&fit=crop&w=600&q=80",
-    github: "#",
-    demo: "#"
-  },
-  {
-    name: "Social Media App",
-    description:
-      "A real-time social media platform with chat, notifications, posts, likes, and comments. Built using React Native, Firebase, and Socket.io for lightning-fast updates.",
-    tags: ["React Native", "Firebase", "Socket.io"],
-    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
-    github: "#",
-    demo: "#"
-  },
-  {
-    name: "Crypto Tracker",
-    description:
-      "A cryptocurrency price tracker with beautiful charts, historical data, and portfolio management. Built with Vue.js, CoinGecko API, and Chart.js.",
-    tags: ["Vue.js", "Chart.js", "CoinGecko API"],
-    image: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80",
-    github: "#",
-    demo: "#"
-  },
-  {
-    name: "Recipe Finder",
-    description:
-      "A recipe search and meal planner using the Spoonacular API. Powerful filters for cuisine, health, and prep time. Built with Next.js and Tailwind CSS.",
-    tags: ["Next.js", "Tailwind", "Spoonacular API"],
-    image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=80",
-    github: "#",
-    demo: "#"
-  },
-  {
-    name: "Personal Budget App",
-    description:
-      "A budgeting app for tracking income, expenses, and savings. Offers charts, export, and multi-currency support. Built in React and Firebase.",
-    tags: ["React", "Firebase", "Finance"],
-    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&q=80",
-    github: "#",
-    demo: "#"
-  },
-  {
-    name: "Task Manager Pro",
-    description:
-      "Advanced task manager with kanban board, priorities, and reminders. Built using Angular, Express, and MongoDB.",
-    tags: ["Angular", "Express", "MongoDB"],
-    image: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80",
-    github: "#",
-    demo: "#"
-  },
-  {
-    name: "Fitness Tracker",
-    description:
-      "A fitness and workout tracker with calendar, statistics, and progress visualization. Built with React, Redux, and D3.js.",
-    tags: ["React", "Redux", "D3.js"],
-    image: "https://images.unsplash.com/photo-1465101178521-c1a9136a3f77?auto=format&fit=crop&w=600&q=80",
-    github: "#",
-    demo: "#"
+    demo: "https://hulu-cl0ne.web.app/",
+    githubDisabled: true
   },
   {
     name: "Portfolio Website",
     description:
-      "A modern, responsive portfolio site built with Next.js, Tailwind CSS, and Framer Motion. Features interactive animations, dark mode, and blazing-fast performance.",
-    tags: ["Next.js", "Tailwind", "Framer Motion"],
-    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&q=80",
+      "A personal portfolio site built in React and CSS. Responsive, animated, and designed for clean presentation of projects and skills.",
+    tags: ["React", "CSS", "Portfolio"],
+    image: Portfolio,
     github: "#",
-    demo: "#"
+    demo: "https://react-portfolio001.web.app/",
+    githubDisabled: true
+  },
+  {
+    name: "Tic Tac Toe Game",
+    description:
+      "A modern Tic Tac Toe game using React and Tailwind CSS. Play against a friend with a minimalist, animated interface.",
+    tags: ["React", "Tailwind", "Game"],
+    image: TicTacToe,
+    github: "https://github.com/iamabieyuwa/tic-tac-toe",
+    demo: "https://tic-tac-toe-pink-five.vercel.app/"
+  },
+  {
+    name: "Investment Calculator",
+    description:
+      "Calculate returns and visualize growth with this React and Tailwind app. Adjust inputs and see instant results and graphs.",
+    tags: ["React", "Tailwind"],
+    image: Investment,
+    github: "https://github.com/iamabieyuwa/investment-app",
+    demo: "https://investment-app-chi.vercel.app/"
+  },
+  {
+    name: "Amazon Clone (Firebase)",
+    description:
+      "An Amazon.com clone with React, CSS, and Firebase login. It features product listings, shopping cart, and secure authentication.",
+    tags: ["React", "CSS", "Firebase", "Authentication"],
+    image: Amazon,
+    github: "#",
+    demo: "https://challenge-8404d.web.app/",
+    githubDisabled: true
+  },
+  {
+    name: "Dozewell Sleep Management App",
+    description:
+      "A modern sleep management app built as a frontend intern. Features charts, routines, and a calming UI for better sleep.",
+    tags: ["Frontend", "React", "Sleep"],
+    image: Dozewell,
+    github: "#",
+    demo: "https://dozewell.com.ng",
+    githubDisabled: true
   }
 ];
 
@@ -162,11 +146,11 @@ export default function Projects() {
 
       <div className="max-w-6xl mx-auto flex flex-col items-center">
         <h2
-  className="text-white text-3xl md:text-4xl font-extrabold mb-3 tracking-tight underline underline-offset-8 decoration-white/20 text-center"
-  data-aos="fade-up"
->
-  Projects
-</h2>
+          className="text-white text-3xl md:text-4xl font-extrabold mb-3 tracking-tight underline underline-offset-8 decoration-white/20 text-center"
+          data-aos="fade-up"
+        >
+          Projects
+        </h2>
         <p
           className="text-white/70 text-lg md:text-xl mb-10 text-center max-w-2xl"
           data-aos="fade-up"
@@ -230,12 +214,21 @@ export default function Projects() {
                 >
                   {/* Project Image */}
                   <div className="relative w-full h-48 sm:h-44 md:h-48 bg-zinc-800 flex-shrink-0">
-                    <img
-                      src={project.image}
-                      alt={project.name}
-                      className="object-cover w-full h-full transition-all duration-300 group-hover:scale-105 group-hover:brightness-110"
-                      draggable="false"
-                    />
+                    {typeof project.image === "string" ? (
+                      <img
+                        src={project.image}
+                        alt={project.name}
+                        className="object-cover w-full h-full transition-all duration-300 group-hover:scale-105 group-hover:brightness-110"
+                        draggable="false"
+                      />
+                    ) : (
+                      <img
+                        src={project.image.src}
+                        alt={project.name}
+                        className="object-cover w-full h-full transition-all duration-300 group-hover:scale-105 group-hover:brightness-110"
+                        draggable="false"
+                      />
+                    )}
                     <div className="absolute inset-0 bg-gradient-to-t from-zinc-900/80 via-transparent to-transparent opacity-80 pointer-events-none" />
                   </div>
 
@@ -257,19 +250,26 @@ export default function Projects() {
                         ))}
                       </div>
                       <div className="flex gap-3 items-center">
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="
+                        {/* GitHub Button with Disability */}
+                        <button
+                          disabled={project.githubDisabled}
+                          onClick={() => {
+                            if (!project.githubDisabled && project.github && project.github !== "#") {
+                              window.open(project.github, "_blank");
+                            }
+                          }}
+                          className={`
                             flex items-center gap-1 px-3 py-1.5 rounded-md bg-zinc-800/80 text-white/90 text-[15px] font-semibold border border-zinc-700
                             hover:bg-zinc-700 hover:text-white hover:border-white/70 transition-all duration-150
                             shadow
-                          "
+                            ${project.githubDisabled ? "opacity-50 cursor-not-allowed pointer-events-none" : ""}
+                          `}
+                          title={project.githubDisabled ? "GitHub repo unavailable for this project" : "View code on GitHub"}
+                          tabIndex={project.githubDisabled ? -1 : 0}
                         >
                           <FaGithub className="text-lg" />
                           <span>Code</span>
-                        </a>
+                        </button>
                         <a
                           href={project.demo}
                           target="_blank"
