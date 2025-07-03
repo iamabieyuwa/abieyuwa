@@ -19,6 +19,7 @@ import Dozewell from './images/Dozewell.jpg';
 import "@fontsource/poppins/400.css";
 import "@fontsource/poppins/600.css";
 import "@fontsource/poppins/700.css";
+import Image from "next/image";
 
 const projects = [
   {
@@ -113,7 +114,7 @@ export default function Projects() {
     window.addEventListener("resize", handleResize);
     handleResize();
     return () => window.removeEventListener("resize", handleResize);
-  }, [projects.length]);
+  }, [projects]);
 
   useEffect(() => {
     if (swiperRef.current && swiperRef.current.swiper) {
@@ -128,7 +129,7 @@ export default function Projects() {
       className="
         relative min-h-screen w-full 
         px-2 sm:px-4 md:px-8 lg:px-12 xl:px-0 
-        pt-6 pb-20 
+        pt-20 pb-20 
         bg-gradient-to-b from-black via-zinc-950 to-black 
         scroll-mt-20
         font-poppins
@@ -211,16 +212,20 @@ export default function Projects() {
                   {/* Project Image */}
                   <div className="relative w-full h-44 sm:h-44 md:h-48 bg-zinc-800 flex-shrink-0">
                     {typeof project.image === "string" ? (
-                      <img
+                      <Image
                         src={project.image}
                         alt={project.name}
+                        width={600}
+                        height={400}
                         className="object-cover w-full h-full transition-all duration-300 group-hover:scale-105 group-hover:brightness-110"
                         draggable="false"
                       />
                     ) : (
-                      <img
+                      <Image
                         src={project.image.src}
                         alt={project.name}
+                        width={600}
+                        height={400}
                         className="object-cover w-full h-full transition-all duration-300 group-hover:scale-105 group-hover:brightness-110"
                         draggable="false"
                       />

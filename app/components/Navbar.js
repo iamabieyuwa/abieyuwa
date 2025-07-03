@@ -65,6 +65,15 @@ export default function Navbar() {
   const inactiveMobile =
     "text-white text-lg font-medium py-2 px-2 rounded-lg group relative transition";
 
+  // Mobile nav anchor handler for smooth scrolling after menu closes
+  const handleMobileNav = href => {
+    setOpen(false);
+    setTimeout(() => {
+      const el = document.querySelector(href);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    }, 220); // match exit menu animation
+  };
+
   return (
     <motion.nav
       initial={{ y: -30, opacity: 0 }}
@@ -151,7 +160,7 @@ export default function Navbar() {
                       "flex items-center gap-3 group relative w-full",
                       active === href ? activeMobile : inactiveMobile
                     )}
-                    onClick={() => setOpen(false)}
+                    onClick={() => handleMobileNav(href)}
                     whileHover={{
                       scale: 1.06,
                       transition: { type: "spring", stiffness: 350, damping: 20 },

@@ -201,14 +201,14 @@ export default function Contact() {
         transition={{ delay: 0.3, duration: 0.6 }}
       >
         <a
-          href="mailto:youremail@example.com"
+          href="mailto:heisyuwa@gmail.com"
           className="rounded-full bg-white/10 backdrop-blur p-3 transition hover:bg-pink-400/30 hover:text-pink-300 shadow-lg text-white text-xl sm:text-2xl font-poppins"
           aria-label="Email"
         >
           <FaEnvelope />
         </a>
         <a
-          href="https://linkedin.com/in/yourusername"
+          href="https://linkedin.com/in/abieyuwa-imina"
           target="_blank"
           rel="noopener noreferrer"
           className="rounded-full bg-white/10 backdrop-blur p-3 transition hover:bg-pink-400/30 hover:text-pink-300 shadow-lg text-white text-xl sm:text-2xl font-poppins"
@@ -217,7 +217,7 @@ export default function Contact() {
           <FaLinkedin />
         </a>
         <a
-          href="https://x.com/yourusername"
+          href="https://x.com/iamnosakare"
           target="_blank"
           rel="noopener noreferrer"
           className="rounded-full bg-white/10 backdrop-blur p-3 transition hover:bg-pink-400/30 hover:text-pink-300 shadow-lg text-white text-xl sm:text-2xl font-poppins"
@@ -226,7 +226,7 @@ export default function Contact() {
           <SiX />
         </a>
         <a
-          href="https://github.com/yourusername"
+          href="https://github.com/iamabieyuwa"
           target="_blank"
           rel="noopener noreferrer"
           className="rounded-full bg-white/10 backdrop-blur p-3 transition hover:bg-pink-400/30 hover:text-pink-300 shadow-lg text-white text-xl sm:text-2xl font-poppins"

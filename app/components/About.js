@@ -49,7 +49,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative flex flex-col min-h-[calc(100vh-72px)] md:min-h-[calc(100vh-55px)] px-2 sm:px-6 md:px-16 bg-black text-white overflow-hidden pt-24 pb-8 scroll-mt-20 font-poppins"
+      className="relative flex flex-col min-h-[calc(100vh-72px)] md:min-h-[calc(100vh-65px)] px-2 sm:px-6 md:px-16 bg-black text-white overflow-hidden pt-24 pb-8 scroll-mt-20 font-poppins"
     >
       {/* Subtle background ellipse */}
       <motion.div

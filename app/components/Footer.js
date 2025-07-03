@@ -21,17 +21,17 @@ const socials = [
     aria: "Email",
   },
   {
-    href: "https://linkedin.com/in/yourusername",
+    href: "https://linkedin.com/in/abieyuwa-imna",
     icon: <FaLinkedin />,
     aria: "LinkedIn",
   },
   {
-    href: "https://x.com/yourusername",
+    href: "https://x.com/iamnosakare",
     icon: <SiX />,
     aria: "X",
   },
   {
-    href: "https://github.com/yourusername",
+    href: "https://github.com/iamabieyuwa",
     icon: <FaGithub />,
     aria: "GitHub",
   },

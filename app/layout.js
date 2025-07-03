@@ -12,18 +12,18 @@ export default function RootLayout({ children }) {
       <head>
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
-        <link rel="canonical" href="https://yourdomain.com/" />
+        <link rel="canonical" href="https://abieyuwa.vercel.app/" />
         {/* Open Graph */}
         <meta property="og:title" content={metadata.title} />
         <meta property="og:description" content={metadata.description} />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://yourdomain.com/" />
-        <meta property="og:image" content="https://yourdomain.com/og-image.jpg" />
+        <meta property="og:url" content="https://abieyuwa.vercel.app" />
+        <meta property="og:image" content="https://abieyuwa.vercel.app/og-image.jpg" />
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={metadata.title} />
         <meta name="twitter:description" content={metadata.description} />
-        <meta name="twitter:image" content="https://yourdomain.com/og-image.jpg" />
+        <meta name="twitter:image" content="https://abieyuwa.vercel.app/og-image.jpg" />
         {/* Favicon */}
         <link rel="icon" href="/favicon.ico" />
       </head>

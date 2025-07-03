@@ -27,7 +27,7 @@ export default function Hero() {
         className="flex flex-col items-center lg:items-start w-full max-w-xl text-center lg:text-left"
       >
         <h1 className="text-4xl sm:text-5xl font-extrabold text-white mb-2 leading-tight drop-shadow-lg font-poppins">
-          Hey, I'm Abieyuwa.
+          {"Hey, I'm Abieyuwa."}
           <br />
           <span className="block text-white/80 font-semibold text-lg sm:text-2xl mt-2">
             <Typewriter
