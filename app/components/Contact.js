@@ -3,32 +3,70 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { FaEnvelope, FaLinkedin, FaGithub } from "react-icons/fa";
 import { SiX } from "react-icons/si";
+import "@fontsource/poppins/400.css";
+import "@fontsource/poppins/600.css";
+import "@fontsource/poppins/700.css";
 
 export default function Contact() {
-  const [sent, setSent] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState(""); // '', 'success', or 'error'
   const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [errors, setErrors] = useState({});
 
-  function handleChange(e) {
+  // Validate fields and set errors if any are empty
+  const validate = () => {
+    const newErrors = {};
+    if (!form.name.trim()) newErrors.name = "Please enter your name.";
+    if (!form.email.trim()) newErrors.email = "Please enter your email.";
+    else if (!/\S+@\S+\.\S+/.test(form.email)) newErrors.email = "Please enter a valid email.";
+    if (!form.message.trim()) newErrors.message = "Please enter your message.";
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
-  }
+    setErrors({ ...errors, [e.target.name]: "" }); // Remove error as user types
+  };
 
-  function handleSubmit(e) {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      setSent(true);
-      setForm({ name: "", email: "", message: "" });
-      setTimeout(() => setSent(false), 2500);
-    }, 1200);
-  }
+    setStatus("");
+    if (!validate()) return;
+
+    try {
+      const data = new FormData();
+      data.append("name", form.name);
+      data.append("email", form.email);
+      data.append("message", form.message);
+
+      const res = await fetch("https://formspree.io/f/mqabjgll", {
+        method: "POST",
+        body: data,
+        headers: { Accept: "application/json" },
+      });
+
+      if (res.ok) {
+        setStatus("success");
+        setForm({ name: "", email: "", message: "" });
+        setTimeout(() => setStatus(""), 3500);
+      } else {
+        setStatus("error");
+      }
+    } catch (error) {
+      setStatus("error");
+    }
+  };
 
   return (
     <section
       id="contact"
-      // Remove pt-16, use only scroll-mt-20
-      className="relative flex flex-col items-center justify-center min-h-[calc(100vh-64px)] pb-10 px-2 sm:px-4 md:px-8 bg-gradient-to-b from-black via-zinc-950 to-black text-white scroll-mt-20"
+      className="
+        relative flex flex-col items-center justify-center
+        pb-10 px-2 sm:px-4 md:px-8
+        bg-gradient-to-b from-black via-zinc-950 to-black
+        text-white scroll-mt-20 font-poppins
+        md:min-h-[calc(100vh-64px)]
+      "
     >
       {/* Stylish blurred ellipse background */}
       <motion.div
@@ -50,7 +88,7 @@ export default function Contact() {
       </motion.div>
 
       <motion.h2
-        className="text-3xl md:text-4xl font-extrabold mb-4 tracking-tight underline underline-offset-8 decoration-white/30"
+        className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-4 tracking-tight underline underline-offset-8 decoration-white/30 font-poppins"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -59,7 +97,7 @@ export default function Contact() {
         Contact
       </motion.h2>
       <motion.p
-        className="text-white/80 text-lg md:text-xl mb-8 text-center max-w-xl"
+        className="text-white/80 text-base sm:text-lg md:text-xl mb-8 text-center max-w-xl font-poppins"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -68,8 +106,8 @@ export default function Contact() {
         Interested in working together or just want to say hello? Fill out the form or reach out via my socials!
       </motion.p>
 
-      {/* Stylish CONTACT FORM */}
       <motion.form
+        onSubmit={handleSubmit}
         className="
           w-full max-w-lg
           bg-white/10
@@ -80,46 +118,78 @@ export default function Contact() {
           shadow-2xl
           transition-all duration-300
           hover:shadow-pink-400/20
+          font-poppins
         "
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: 0.15, duration: 0.6 }}
-        onSubmit={handleSubmit}
+        noValidate
       >
-        <input
-          className="bg-white/10 border-none rounded-md px-4 py-2 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-pink-400 focus:bg-white/20 transition text-base"
-          type="text"
-          name="name"
-          value={form.name}
-          onChange={handleChange}
-          placeholder="Your Name"
-          required
-        />
-        <input
-          className="bg-white/10 border-none rounded-md px-4 py-2 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-pink-400 focus:bg-white/20 transition text-base"
-          type="email"
-          name="email"
-          value={form.email}
-          onChange={handleChange}
-          placeholder="Your Email"
-          required
-        />
-        <textarea
-          className="bg-white/10 border-none rounded-md px-4 py-2 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-pink-400 focus:bg-white/20 transition min-h-[90px] resize-none text-base"
-          name="message"
-          value={form.message}
-          onChange={handleChange}
-          placeholder="Your Message"
-          required
-        />
+        <div className="flex flex-col gap-1">
+          <input
+            className={`bg-white/10 border-none rounded-md px-4 py-2 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-pink-400 focus:bg-white/20 transition text-sm sm:text-base font-poppins ${errors.name ? "ring-2 ring-red-400" : ""}`}
+            type="text"
+            name="name"
+            placeholder="Your Name"
+            value={form.name}
+            onChange={handleChange}
+            autoComplete="off"
+          />
+          {errors.name && <span className="text-xs text-red-400 pl-1">{errors.name}</span>}
+        </div>
+        <div className="flex flex-col gap-1">
+          <input
+            className={`bg-white/10 border-none rounded-md px-4 py-2 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-pink-400 focus:bg-white/20 transition text-sm sm:text-base font-poppins ${errors.email ? "ring-2 ring-red-400" : ""}`}
+            type="email"
+            name="email"
+            placeholder="Your Email"
+            value={form.email}
+            onChange={handleChange}
+            autoComplete="off"
+          />
+          {errors.email && <span className="text-xs text-red-400 pl-1">{errors.email}</span>}
+        </div>
+        <div className="flex flex-col gap-1">
+          <textarea
+            className={`bg-white/10 border-none rounded-md px-4 py-2 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-pink-400 focus:bg-white/20 transition min-h-[90px] resize-none text-sm sm:text-base font-poppins ${errors.message ? "ring-2 ring-red-400" : ""}`}
+            name="message"
+            placeholder="Your Message"
+            value={form.message}
+            onChange={handleChange}
+            autoComplete="off"
+          />
+          {errors.message && <span className="text-xs text-red-400 pl-1">{errors.message}</span>}
+        </div>
         <button
           type="submit"
-          className="bg-gradient-to-r from-pink-500 to-fuchsia-600 hover:from-pink-400 hover:to-fuchsia-700 text-white font-bold py-2 px-4 rounded-md transition disabled:opacity-60 shadow-lg"
-          disabled={loading || sent}
+          className="bg-gradient-to-r from-pink-500 to-fuchsia-600 hover:from-pink-400 hover:to-fuchsia-700 text-white font-bold py-2 px-4 rounded-md transition disabled:opacity-60 shadow-lg font-poppins"
+          disabled={status === "success"}
         >
-          {loading ? "Sending..." : sent ? "Message Sent!" : "Send Message"}
+          {status === "success"
+            ? "Message Sent!"
+            : status === "error"
+            ? "Something went wrong"
+            : "Send Message"}
         </button>
+        {status === "success" && (
+          <motion.p
+            className="text-green-400 text-center mt-2 text-base font-semibold bg-green-900/30 rounded-md py-2 px-3 shadow"
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            🎉 Thank you! Your message has been sent.
+          </motion.p>
+        )}
+        {status === "error" && (
+          <motion.p
+            className="text-red-400 text-center mt-2 text-base font-semibold bg-red-900/30 rounded-md py-2 px-3 shadow"
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            Oops! Something went wrong. Please try again.
+          </motion.p>
+        )}
       </motion.form>
 
       {/* Social links - glassy w/ hover glow */}
@@ -132,7 +202,7 @@ export default function Contact() {
       >
         <a
           href="mailto:youremail@example.com"
-          className="rounded-full bg-white/10 backdrop-blur p-3 transition hover:bg-pink-400/30 hover:text-pink-300 shadow-lg text-white text-2xl"
+          className="rounded-full bg-white/10 backdrop-blur p-3 transition hover:bg-pink-400/30 hover:text-pink-300 shadow-lg text-white text-xl sm:text-2xl font-poppins"
           aria-label="Email"
         >
           <FaEnvelope />
@@ -141,7 +211,7 @@ export default function Contact() {
           href="https://linkedin.com/in/yourusername"
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded-full bg-white/10 backdrop-blur p-3 transition hover:bg-pink-400/30 hover:text-pink-300 shadow-lg text-white text-2xl"
+          className="rounded-full bg-white/10 backdrop-blur p-3 transition hover:bg-pink-400/30 hover:text-pink-300 shadow-lg text-white text-xl sm:text-2xl font-poppins"
           aria-label="LinkedIn"
         >
           <FaLinkedin />
@@ -150,7 +220,7 @@ export default function Contact() {
           href="https://x.com/yourusername"
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded-full bg-white/10 backdrop-blur p-3 transition hover:bg-pink-400/30 hover:text-pink-300 shadow-lg text-white text-2xl"
+          className="rounded-full bg-white/10 backdrop-blur p-3 transition hover:bg-pink-400/30 hover:text-pink-300 shadow-lg text-white text-xl sm:text-2xl font-poppins"
           aria-label="X"
         >
           <SiX />
@@ -159,7 +229,7 @@ export default function Contact() {
           href="https://github.com/yourusername"
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded-full bg-white/10 backdrop-blur p-3 transition hover:bg-pink-400/30 hover:text-pink-300 shadow-lg text-white text-2xl"
+          className="rounded-full bg-white/10 backdrop-blur p-3 transition hover:bg-pink-400/30 hover:text-pink-300 shadow-lg text-white text-xl sm:text-2xl font-poppins"
           aria-label="GitHub"
         >
           <FaGithub />

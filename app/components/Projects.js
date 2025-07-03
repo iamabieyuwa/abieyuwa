@@ -16,6 +16,9 @@ import TicTacToe from './images/TicTacToe.jpeg';
 import Investment from './images/Investment.jpeg';
 import Amazon from './images/Amazon.jpg';
 import Dozewell from './images/Dozewell.jpg';
+import "@fontsource/poppins/400.css";
+import "@fontsource/poppins/600.css";
+import "@fontsource/poppins/700.css";
 
 const projects = [
   {
@@ -96,7 +99,7 @@ export default function Projects() {
   const swiperRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  // Dots should match the number of "pages" (groups of slides)
+  // Responsive page count for custom dots
   const getPageCount = () => {
     if (typeof window !== "undefined") {
       if (window.innerWidth >= 1024) return Math.ceil(projects.length / 3);
@@ -112,7 +115,6 @@ export default function Projects() {
     return () => window.removeEventListener("resize", handleResize);
   }, [projects.length]);
 
-  // Swiper may need a slight delay to link to the pagination div
   useEffect(() => {
     if (swiperRef.current && swiperRef.current.swiper) {
       swiperRef.current.swiper.pagination?.render();
@@ -123,36 +125,27 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="relative min-h-screen w-full px-2 sm:px-6 md:px-16 pt-6 pb-20 bg-gradient-to-b from-black via-zinc-950 to-black scroll-mt-20"
+      className="
+        relative min-h-screen w-full 
+        px-2 sm:px-4 md:px-8 lg:px-12 xl:px-0 
+        pt-6 pb-20 
+        bg-gradient-to-b from-black via-zinc-950 to-black 
+        scroll-mt-20
+        font-poppins
+        box-border
+        overflow-x-hidden
+      "
     >
-      {/* Fancy background */}
-      <motion.div
-        className="absolute left-1/2 top-0 w-[600px] h-[340px] -translate-x-1/2 -z-10 pointer-events-none"
-        initial={{ opacity: 0.4, scale: 1 }}
-        animate={{ opacity: [0.4, 0.7, 0.4], scale: [1, 1.04, 1] }}
-        transition={{ repeat: Infinity, duration: 18, ease: "easeInOut" }}
-      >
-        <svg width="100%" height="100%" viewBox="0 0 600 340" fill="none">
-          <ellipse
-            cx="300"
-            cy="170"
-            rx="290"
-            ry="110"
-            fill="white"
-            fillOpacity="0.08"
-          />
-        </svg>
-      </motion.div>
 
-      <div className="max-w-6xl mx-auto flex flex-col items-center">
+      <div className="max-w-6xl mx-auto flex flex-col items-center w-full">
         <h2
-          className="text-white text-3xl md:text-4xl font-extrabold mb-3 tracking-tight underline underline-offset-8 decoration-white/20 text-center"
+          className="text-white text-2xl sm:text-3xl md:text-4xl font-extrabold mb-3 tracking-tight underline underline-offset-8 decoration-white/20 text-center font-poppins"
           data-aos="fade-up"
         >
           Projects
         </h2>
         <p
-          className="text-white/70 text-lg md:text-xl mb-10 text-center max-w-2xl"
+          className="text-white/70 text-base sm:text-lg md:text-xl mb-10 text-center max-w-2xl font-poppins"
           data-aos="fade-up"
           data-aos-delay="70"
         >
@@ -160,11 +153,11 @@ export default function Projects() {
         </p>
 
         {/* Swiper Carousel */}
-        <div className="w-full relative">
+        <div className="w-full relative max-w-full overflow-x-hidden">
           <Swiper
             ref={swiperRef}
             modules={[Pagination, Autoplay]}
-            spaceBetween={30}
+            spaceBetween={20}
             slidesPerView={1}
             breakpoints={{
               640: { slidesPerView: 1 },
@@ -210,10 +203,13 @@ export default function Projects() {
                     transition-all duration-300
                     hover:border-white/30 hover:shadow-2xl
                     cursor-pointer
+                    w-full
+                    max-w-[420px]
+                    mx-auto
                   "
                 >
                   {/* Project Image */}
-                  <div className="relative w-full h-48 sm:h-44 md:h-48 bg-zinc-800 flex-shrink-0">
+                  <div className="relative w-full h-44 sm:h-44 md:h-48 bg-zinc-800 flex-shrink-0">
                     {typeof project.image === "string" ? (
                       <img
                         src={project.image}
@@ -233,17 +229,17 @@ export default function Projects() {
                   </div>
 
                   {/* Project Content */}
-                  <div className="flex flex-col flex-1 px-5 py-5 gap-2 justify-between">
+                  <div className="flex flex-col flex-1 px-4 py-5 gap-2 justify-between">
                     <div>
-                      <h3 className="text-xl font-bold text-white mb-1">{project.name}</h3>
-                      <p className="text-white/80 text-base mb-2">{project.description}</p>
+                      <h3 className="text-lg sm:text-xl font-bold text-white mb-1 font-poppins">{project.name}</h3>
+                      <p className="text-white/80 text-sm sm:text-base mb-2 font-poppins">{project.description}</p>
                     </div>
                     <div>
                       <div className="flex flex-wrap gap-2 mb-2">
                         {project.tags.map((tag) => (
                           <span
                             key={tag}
-                            className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-zinc-800 text-white/80 border border-zinc-700"
+                            className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-zinc-800 text-white/80 border border-zinc-700 font-poppins"
                           >
                             {tag}
                           </span>
@@ -263,6 +259,7 @@ export default function Projects() {
                             hover:bg-zinc-700 hover:text-white hover:border-white/70 transition-all duration-150
                             shadow
                             ${project.githubDisabled ? "opacity-50 cursor-not-allowed pointer-events-none" : ""}
+                            font-poppins
                           `}
                           title={project.githubDisabled ? "GitHub repo unavailable for this project" : "View code on GitHub"}
                           tabIndex={project.githubDisabled ? -1 : 0}
@@ -277,7 +274,9 @@ export default function Projects() {
                           className="
                             flex items-center gap-1 px-3 py-1.5 rounded-md bg-gradient-to-r from-fuchsia-500 via-pink-500 to-rose-500 text-white text-[15px] font-semibold
                             hover:from-fuchsia-600 hover:to-rose-600 transition-all duration-150
-                            shadow"
+                            shadow
+                            font-poppins
+                          "
                         >
                           <FaExternalLinkAlt className="text-sm" />
                           <span>Live</span>

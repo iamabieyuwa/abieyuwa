@@ -9,6 +9,9 @@ import {
 } from "react-icons/si";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import "@fontsource/poppins/400.css";
+import "@fontsource/poppins/600.css";
+import "@fontsource/poppins/700.css";
 
 // List of tools unchanged
 const tools = [
@@ -46,7 +49,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative flex flex-col min-h-[calc(100vh-72px)] px-2 sm:px-6 md:px-16 bg-black text-white overflow-hidden pt-24 pb-8 scroll-mt-20"
+      className="relative flex flex-col min-h-[calc(100vh-72px)] md:min-h-[calc(100vh-55px)] px-2 sm:px-6 md:px-16 bg-black text-white overflow-hidden pt-24 pb-8 scroll-mt-20 font-poppins"
     >
       {/* Subtle background ellipse */}
       <motion.div
@@ -69,23 +72,19 @@ export default function About() {
 
       {/* About Text */}
       <div
-        className="w-full flex flex-col items-center text-center max-w-3xl mx-auto"
+        className="w-full flex flex-col items-center text-center max-w-3xl mx-auto px-4 py-10"
         data-aos="fade-up"
       >
-        <h2 className="text-3xl md:text-4xl font-extrabold mb-4 tracking-tight underline underline-offset-8 decoration-white/30">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-4 tracking-tight underline underline-offset-8 decoration-pink-400/40 text-white font-poppins">
           About Me
         </h2>
-        <p className="text-white font-semibold text-xl md:text-2xl mb-3 tracking-wide drop-shadow-md">
-          Hello, I’m Abieyuwa — a creative frontend developer and Computer Science student. I turn ideas into clean, interactive web experiences.
+        <p className="text-white font-semibold text-base sm:text-lg md:text-xl mb-3 tracking-wide font-poppins">
+          I enjoy building intuitive, interactive digital experiences that make a difference.
         </p>
-        <p className="text-white/80 text-lg md:text-xl mb-2 italic font-light">
-          Passionate about beautiful code, pixel-perfect UI, and building for everyone.
-        </p>
-        <p className="text-white/60 text-base md:text-lg mb-8 font-light">
-          I love React, Next.js, and all things web. Let’s create something amazing!
+        <p className="text-white/90 text-sm sm:text-base md:text-lg mb-2 font-normal font-poppins">
+          My name is Abieyuwa, a self-taught developer based in Benin, Edo State. With over 4 years of hands-on experience in web development, UI/UX design, and programming, I’m passionate about turning ideas into engaging products. I’m currently studying Computer Science, committed to continuous learning and growth.
         </p>
       </div>
-
       {/* Tools as grid: 2 per row on mobile, 3 per row on sm+, with padding and smaller card size */}
       <div className="w-full flex flex-col items-center">
         <div
@@ -115,6 +114,7 @@ export default function About() {
                 sm:w-[92px] sm:h-[92px]
                 md:w-[105px] md:h-[105px]
                 px-2 py-2 md:px-4 md:py-4 text-center
+                font-poppins
               `}
               data-aos="fade-up"
               data-aos-delay={idx * 40}
@@ -127,7 +127,7 @@ export default function About() {
               }}
             >
               <span className="mb-1 flex items-center justify-center w-full">{tool.icon}</span>
-              <span className="w-full block text-[11px] sm:text-[12px] md:text-sm text-center font-semibold">
+              <span className="w-full block text-[10px] sm:text-[12px] md:text-sm text-center font-semibold font-poppins">
                 {tool.name}
               </span>
             </div>

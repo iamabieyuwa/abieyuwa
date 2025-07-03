@@ -16,6 +16,18 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(navLinks[0].href);
 
+  // Prevent body horizontal scroll when mobile menu is open
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflowX = "hidden";
+    } else {
+      document.body.style.overflowX = "";
+    }
+    return () => {
+      document.body.style.overflowX = "";
+    };
+  }, [open]);
+
   // Update active state on scroll
   useEffect(() => {
     const handleScroll = () => {
@@ -37,7 +49,6 @@ export default function Navbar() {
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    // Initial check in case page is not at top
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -50,7 +61,7 @@ export default function Navbar() {
 
   // Mobile Nav styling for active link
   const activeMobile =
-    "text-pink-400 font-bold after:absolute after:left-0 after:-bottom-0.5 after:w-full after:h-0.5 after:bg-pink-400 after:rounded-full after:scale-x-100";
+    "text-pink-400 font-bold";
   const inactiveMobile =
     "text-white text-lg font-medium py-2 px-2 rounded-lg group relative transition";
 
@@ -60,11 +71,11 @@ export default function Navbar() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.4, ease: "easeOut" }}
       className={clsx(
-        "fixed top-0 left-0 w-full z-40 backdrop-blur-lg",
-        "bg-black/70 border-b border-white/10 shadow-xl"
+        "fixed top-0 left-0 w-full z-40 backdrop-blur-lg bg-black/70 border-b border-white/10 shadow-xl overflow-x-hidden"
       )}
+      style={{ overscrollBehaviorX: "none" }}
     >
-      <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between font-mono">
+      <div className="w-full max-w-full px-4 py-3 flex items-center justify-between font-mono">
         {/* Name/Brand */}
         <span className="text-white text-lg md:text-xl font-mono font-semibold tracking-widest select-none">
           Abieyuwa Imina
@@ -121,11 +132,12 @@ export default function Navbar() {
             animate={{ height: "auto", opacity: 1, y: 0 }}
             exit={{ height: 0, opacity: 0, y: -20 }}
             transition={{ duration: 0.25 }}
-            className="md:hidden overflow-hidden"
+            className="md:hidden overflow-hidden w-full"
+            style={{ maxWidth: "100vw" }}
           >
             <motion.ul
               className={clsx(
-                "flex flex-col gap-2 px-7 pt-3 pb-6 bg-black/95 font-mono rounded-b-2xl border-x border-b border-white/10 shadow-xl"
+                "flex flex-col gap-2 px-4 pt-3 pb-6 bg-black/95 font-mono rounded-b-2xl border-x-0 border-b border-white/10 shadow-xl w-full"
               )}
               initial="closed"
               animate="open"
@@ -136,7 +148,7 @@ export default function Navbar() {
                   <motion.a
                     href={href}
                     className={clsx(
-                      "flex items-center gap-3 group relative",
+                      "flex items-center gap-3 group relative w-full",
                       active === href ? activeMobile : inactiveMobile
                     )}
                     onClick={() => setOpen(false)}
@@ -148,14 +160,6 @@ export default function Navbar() {
                   >
                     <Icon className={clsx("h-6 w-6 opacity-80", active === href ? "text-pink-400" : "text-white")} />
                     <span className="tracking-wide">{name}</span>
-                    <span
-                      className={clsx(
-                        "absolute left-0 -bottom-0.5 w-full h-0.5 rounded-full origin-left transition-transform duration-300",
-                        active === href
-                          ? "bg-pink-400 scale-x-100"
-                          : "bg-white/80 scale-x-0 group-hover:scale-x-100"
-                      )}
-                    />
                   </motion.a>
                 </li>
               ))}
