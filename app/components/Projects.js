@@ -32,7 +32,7 @@ export default function Projects() {
   }, []);
 
   return (
-    <section id="projects" className=" relative px-4 py-16 bg-gradient-to-b from-black via-zinc-950 to-black text-white font-poppins">
+    <section id="projects" className=" relative pb-35 px-4 pt-18 bg-gradient-to-b from-black via-zinc-950 to-black text-white font-poppins">
       <div className="max-w-6xl mx-auto text-center">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-6 underline underline-offset-8 decoration-pink-400/40" data-aos="fade-up">
           Projects
