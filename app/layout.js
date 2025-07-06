@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Navbar from "./components/Navbar";
 import "./globals.css";
 
@@ -32,8 +33,8 @@ export const metadata = {
     title: "Abieyuwa Imina | Portfolio",
     description:
       "Abieyuwa Imina's portfolio – Explore projects, skills, and connect with me.",
-    site: "@iamnosakare",
-    creator: "@iamnosakare",
+    site: "@iamabieyuwa",
+    creator: "@iamabieyuwa",
     images: ["/og-image.jpg"],
   },
 };
@@ -41,7 +42,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <head>
+      <Head className='scroll-smooth'>
         {/* Canonical */}
         <link rel="canonical" href="https://abieyuwa.vercel.app/" />
         {/* Favicon */}
@@ -57,7 +58,7 @@ export default function RootLayout({ children }) {
               url: "https://abieyuwa.vercel.app",
               sameAs: [
                 "https://www.linkedin.com/in/abieyuwa-imina",
-                "https://twitter.com/iamnosakare"
+                "https://twitter.com/iamabieyuwa"
               ],
               jobTitle: "Frontend Engineer & Student",
               worksFor: {
@@ -70,7 +71,7 @@ export default function RootLayout({ children }) {
             }),
           }}
         />
-      </head>
+      </Head>
       <body>
         <Navbar />
         {children}

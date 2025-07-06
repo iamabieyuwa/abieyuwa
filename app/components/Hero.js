@@ -14,22 +14,37 @@ export default function Hero() {
   }, []);
 
   return (
-    <section
-      id="home"
-      aria-label="Hero section"
-      className="relative flex flex-col lg:flex-row items-center justify-center min-h-screen px-4 py-8 bg-black font-poppins gap-20 lg:gap-60"
-    >
+ <section
+  id="home"
+  aria-label="Hero section"
+  className="relative flex flex-col lg:flex-row items-center justify-center min-h-screen px-4 py-8 bg-gradient-to-b from-black via-black to-[#0a0a0a] font-poppins gap-14 sm:gap-20 lg:gap-60 overflow-hidden"
+>
+  {/* Animated Glows */}
+  <motion.div
+    className="absolute inset-0 z-0"
+    initial={{ opacity: 0.5, scale: 1 }}
+    animate={{ opacity: [0.5, 0.7, 0.5], scale: [1, 1.03, 1] }}
+    transition={{ repeat: Infinity, duration: 10, ease: "easeInOut" }}
+  >
+    <div className="absolute -top-32 -left-32 w-64 h-64 sm:w-72 sm:h-72 md:w-96 md:h-96 rounded-full blur-3xl bg-gradient-to-tr from-pink-400/20 via-pink-500/20 to-pink-600/20" />
+    <div className="absolute -bottom-32 -right-32 w-64 h-64 sm:w-72 sm:h-72 md:w-96 md:h-96 rounded-full blur-3xl bg-gradient-to-br from-pink-400/20 via-pink-500/20 to-pink-600/20" />
+  </motion.div>
+
+
       {/* Content */}
       <motion.div
         initial={{ opacity: 0, x: -40 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
-        className="flex flex-col items-center lg:items-start w-full max-w-xl text-center lg:text-left"
+        className="relative z-10 flex flex-col items-center lg:items-start w-full max-w-xl text-center lg:text-left"
       >
-        <h1 className="text-4xl sm:text-5xl font-extrabold text-white mb-2 leading-tight drop-shadow-lg font-poppins">
-          {"Hey, I'm Abieyuwa."}
+        <h1 className="text-3xl sm:text-5xl font-extrabold text-white mb-2 leading-tight drop-shadow-lg">
+          {"Hey, I'm "}
+          <span className="bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 bg-clip-text text-transparent">
+            Abieyuwa.
+          </span>
           <br />
-          <span className="block text-white/80 font-semibold text-lg sm:text-2xl mt-2">
+          <span className="block text-white/80 font-semibold text-base sm:text-2xl mt-2">
             <Typewriter
               words={[
                 "Frontend Developer",
@@ -46,24 +61,23 @@ export default function Hero() {
             />
           </span>
         </h1>
-        <p className="text-neutral-300 text-sm sm:text-base mt-1 mb-3 font-normal max-w-lg">
-          I’m passionate about crafting beautiful, accessible web experiences—turning ideas into delightful, performant products.
+        <p className="text-neutral-300 text-xs sm:text-sm md:text-base mt-1 mb-3 font-normal max-w-lg">
+          I craft sleek, accessible, and high-performing web experiences—turning ideas into digital products people love to use.
         </p>
-        <div className="flex flex-row gap-2 mt-8 w-full lg:w-auto justify-center lg:justify-start">
+        <div className="flex flex-row gap-2 mt-6 w-full lg:w-auto justify-center lg:justify-start">
           <a
             href="#projects"
-            aria-label="See my work"
-            className="px-5 py-2.5 bg-pink-500 text-white text-base rounded-lg shadow-md font-semibold transition-all hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-400 focus:ring-offset-2"
+            aria-label="See my projects"
+            className="px-4 py-2 sm:px-5 sm:py-2.5 bg-pink-500 text-white text-sm sm:text-base rounded-lg shadow-md font-semibold transition-all hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-400 focus:ring-offset-2"
           >
-            See My Work
+            Explore Projects
           </a>
           <a
             href="#contact"
             aria-label="Contact Abieyuwa"
-            className="px-4 py-2 bg-white text-black text-base rounded-lg shadow-md font-semibold transition-all hover:bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
-            style={{ minWidth: "auto" }}
+            className="px-4 py-2 sm:px-4 sm:py-2.5 bg-white text-black text-sm sm:text-base rounded-lg shadow-md font-semibold transition-all hover:bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
           >
-            Hire Me
+            Let’s Connect
           </a>
         </div>
       </motion.div>
@@ -73,19 +87,19 @@ export default function Hero() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ 
           opacity: 1, 
-          y: [0, -16, 0, 16, 0] // floating effect using tween for multiple keyframes
+          y: [0, -16, 0, 16, 0]
         }}
         transition={{
           duration: 4,
           ease: "easeInOut",
-          repeat: 0 // no infinite, just once
+          repeat: 0
         }}
-        className="w-full lg:w-auto flex justify-center"
+        className="relative z-10 w-full lg:w-auto flex justify-center"
       >
         <motion.img
           src="/me1.png"
           alt="Abieyuwa"
-          className="w-40 h-40 sm:w-56 sm:h-56 lg:w-72 lg:h-72 rounded-2xl object-cover shadow-2xl border-4 border-white/10"
+          className="w-32 h-32 sm:w-40 sm:h-40 md:w-56 md:h-56 lg:w-72 lg:h-72 rounded-2xl object-cover shadow-2xl border-4 border-white/10"
           loading="lazy"
           aria-label="Abieyuwa's profile picture"
           initial={{ scale: 0.95 }}

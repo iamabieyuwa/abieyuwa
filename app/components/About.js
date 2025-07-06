@@ -2,10 +2,10 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import {
-  FaReact, FaAccessibleIcon, FaGitAlt, FaJs, FaGithub, FaHtml5, FaCss3Alt, FaNodeJs, FaPython, FaNpm, FaSass, FaGitlab, FaDatabase
+  FaReact, FaGitAlt, FaJs, FaGithub, FaHtml5, FaCss3Alt, FaNodeJs, FaPython, FaSass, FaGitlab
 } from "react-icons/fa";
 import {
-  SiNextdotjs, SiTailwindcss, SiFirebase, SiFigma, SiRedux, SiJest, SiExpress, SiMongodb, SiVercel, SiNetlify, SiPostman, SiWebpack
+  SiNextdotjs, SiTailwindcss, SiFirebase, SiFigma, SiRedux, SiJest
 } from "react-icons/si";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -13,7 +13,6 @@ import "@fontsource/poppins/400.css";
 import "@fontsource/poppins/600.css";
 import "@fontsource/poppins/700.css";
 
-// List of tools unchanged
 const tools = [
   { name: "React", color: "bg-blue-100", text: "text-blue-900", icon: <FaReact className="text-[1.7rem] md:text-2xl" /> },
   { name: "Next.js", color: "bg-gray-100", text: "text-gray-900", icon: <SiNextdotjs className="text-[1.7rem] md:text-2xl" /> },
@@ -37,103 +36,68 @@ const tools = [
 export default function About() {
   useEffect(() => {
     AOS.init({ duration: 900, once: false, offset: 100 });
-    // animate on navlink scroll
-    const hash = window.location.hash;
-    if (hash && document.querySelector(hash)) {
-      setTimeout(() => {
-        document.querySelector(hash)?.scrollIntoView({ behavior: "smooth", block: "start" });
-      }, 50);
-    }
   }, []);
 
   return (
-    <section
+    <motion.section
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
       id="about"
-      className="relative flex flex-col min-h-[calc(100vh-72px)] md:min-h-[calc(100vh-65px)] px-2 sm:px-6 md:px-16 bg-black text-white overflow-hidden pt-24 pb-8 scroll-mt-20 font-poppins"
+      className="relative flex flex-col min-h-[calc(100vh-72px)] px-4 py-16 bg-gradient-to-b from-black via-black to-[#0a0a0a] text-white overflow-hidden font-poppins"
     >
-      {/* Subtle background ellipse */}
+      {/* Subtle background ellipse with gradient */}
       <motion.div
-        className="absolute left-1/2 top-24 w-[320px] sm:w-[420px] h-[220px] sm:h-[320px] -translate-x-1/2 -z-10 pointer-events-none"
+        className="absolute left-1/2 top-20 w-[280px] sm:w-[400px] h-[220px] sm:h-[320px] -translate-x-1/2 -z-10 pointer-events-none"
         initial={{ opacity: 0.7, scale: 1 }}
         animate={{ opacity: [0.7, 0.8, 0.7], scale: [1, 1.04, 1] }}
-        transition={{ repeat: Infinity, duration: 12, ease: "easeInOut" }}
+        transition={{ repeat: Infinity, duration: 14, ease: "easeInOut" }}
       >
         <svg width="100%" height="100%" viewBox="0 0 340 340" fill="none">
-          <ellipse
-            cx="170"
-            cy="170"
-            rx="160"
-            ry="120"
-            fill="white"
-            fillOpacity="0.07"
-          />
+          <defs>
+            <radialGradient id="grad" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="#ec4899" stopOpacity="0.25" />
+              <stop offset="100%" stopColor="#ec4899" stopOpacity="0" />
+            </radialGradient>
+          </defs>
+          <ellipse cx="170" cy="170" rx="160" ry="120" fill="url(#grad)" />
         </svg>
       </motion.div>
 
       {/* About Text */}
-      <div
-        className="w-full flex flex-col items-center text-center max-w-3xl mx-auto px-4 py-10"
-        data-aos="fade-up"
-      >
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-4 tracking-tight underline underline-offset-8 decoration-pink-400/40 text-white font-poppins">
+      <div className="w-full flex flex-col items-center text-center max-w-3xl mx-auto px-2 py-10" data-aos="fade-up">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-4 tracking-tight underline underline-offset-8 decoration-pink-400/40">
           About Me
         </h2>
-        <p className="text-white font-semibold text-base sm:text-lg md:text-xl mb-3 tracking-wide font-poppins">
-          I enjoy building intuitive, interactive digital experiences that make a difference.
+        <p className="text-white font-semibold text-sm sm:text-base md:text-lg mb-3">
+          I enjoy crafting sleek, intuitive, and meaningful digital experiences.
         </p>
-        <p className="text-white/90 text-sm sm:text-base md:text-lg mb-2 font-normal font-poppins">
-          My name is Abieyuwa, a self-taught developer based in Benin, Edo State. With over 4 years of hands-on experience in web development, UI/UX design, and programming, I’m passionate about turning ideas into engaging products. I’m currently studying Computer Science, committed to continuous learning and growth.
+        <p className="text-white/90 text-xs sm:text-sm md:text-base mb-2 font-normal">
+          I'm Abieyuwa — a self-taught frontend developer and designer based in Benin City, Nigeria.
+          I blend creativity with code to build accessible, performant, and engaging websites.
+          With 4+ years of experience, I’m passionate about continuous learning, clean design,
+          and turning ideas into reality.
         </p>
       </div>
-      {/* Tools as grid: 2 per row on mobile, 3 per row on sm+, with padding and smaller card size */}
+
+      {/* Tools Grid */}
       <div className="w-full flex flex-col items-center">
-        <div
-          className="
-            grid
-            grid-cols-4
-            sm:grid-cols-3
-            md:grid-cols-4
-            lg:grid-cols-6
-            gap-4
-            mt-2
-            justify-center
-            min-h-[80px]
-            px-2
-          "
-        >
+        <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3 sm:gap-4 mt-2 px-2">
           {tools.map((tool, idx) => (
             <div
               key={tool.name + idx}
-              className={`
-                flex flex-col items-center justify-center
-                ${tool.color} ${tool.text}
-                rounded-xl shadow-md font-semibold
-                transition-all duration-300 hover:scale-105
-                aspect-square
-                w-[75px] h-[75px]
-                sm:w-[92px] sm:h-[92px]
-                md:w-[105px] md:h-[105px]
-                px-2 py-2 md:px-4 md:py-4 text-center
-                font-poppins
-              `}
+              className={`flex flex-col items-center justify-center ${tool.color} ${tool.text} rounded-xl shadow-md transition-all duration-300 hover:scale-105 aspect-square w-[60px] h-[60px] sm:w-[75px] sm:h-[75px] md:w-[90px] md:h-[90px] px-2 py-2 md:px-3 md:py-3 text-center`}
               data-aos="fade-up"
               data-aos-delay={idx * 40}
-              style={{
-                minHeight: "58px",
-                maxWidth: "120px",
-                backgroundClip: "padding-box",
-                wordBreak: "break-word",
-                whiteSpace: "normal"
-              }}
             >
               <span className="mb-1 flex items-center justify-center w-full">{tool.icon}</span>
-              <span className="w-full block text-[10px] sm:text-[12px] md:text-sm text-center font-semibold font-poppins">
+              <span className="w-full block text-[9px] sm:text-xs md:text-sm text-center font-semibold">
                 {tool.name}
               </span>
             </div>
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
