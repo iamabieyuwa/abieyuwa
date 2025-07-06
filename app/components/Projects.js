@@ -17,13 +17,13 @@ import Amazon from './images/Amazon.jpg';
 import Dozewell from './images/Dozewell.jpg';
 
 const projects = [
-  { name: "Airbnb Clone", desc: "Airbnb homepage clone using React & CSS.", tags: ["React", "CSS"], image: Airbnb, demo: "https://airbnb-cl0ne.web.app/", github: "#" },
-  { name: "Hulu Clone", desc: "Hulu movie search app using public API.", tags: ["React", "API"], image: Hulu, demo: "https://hulu-cl0ne.web.app/", github: "#" },
-  { name: "Portfolio Site", desc: "Personal portfolio built with React.", tags: ["React", "Portfolio"], image: Portfolio, demo: "https://react-portfolio001.web.app/", github: "#" },
-  { name: "Tic Tac Toe", desc: "Tic Tac Toe game with React & Tailwind.", tags: ["React", "Tailwind"], image: TicTacToe, demo: "https://tic-tac-toe-pink-five.vercel.app/", github: "https://github.com/iamabieyuwa/tic-tac-toe" },
-  { name: "Investment App", desc: "Investment calculator with React & Tailwind.", tags: ["React", "Finance"], image: Investment, demo: "https://investment-app-chi.vercel.app/", github: "https://github.com/iamabieyuwa/investment-app" },
-  { name: "Amazon Clone", desc: "Amazon clone with Firebase login.", tags: ["React", "Firebase"], image: Amazon, demo: "https://challenge-8404d.web.app/", github: "#" },
-  { name: "Dozewell Sleep App", desc: "Sleep tracking app with calming UI.", tags: ["React", "Sleep"], image: Dozewell, demo: "https://dozewell.com.ng", github: "#" },
+  { name: "Airbnb Clone", desc: "Airbnb homepage clone using React & CSS.", tags: ["React", "CSS"], image: Airbnb, demo: "https://airbnb-cl0ne.web.app/", github: "#", liveDisabled: false, githubDisabled: true },
+  { name: "Hulu Clone", desc: "Hulu movie search app using public API.", tags: ["React", "API"], image: Hulu, demo: "https://hulu-cl0ne.web.app/", github: "#", liveDisabled: false, githubDisabled: true },
+  { name: "Portfolio Site", desc: "Personal portfolio built with React.", tags: ["React", "Portfolio"], image: Portfolio, demo: "https://react-portfolio001.web.app/", github: "#", liveDisabled: false, githubDisabled: true },
+  { name: "Tic Tac Toe", desc: "Tic Tac Toe game with React & Tailwind.", tags: ["React", "Tailwind"], image: TicTacToe, demo: "https://tic-tac-toe-pink-five.vercel.app/", github: "https://github.com/iamabieyuwa/tic-tac-toe", liveDisabled: false, githubDisabled: false },
+  { name: "Investment App", desc: "Investment calculator with React & Tailwind.", tags: ["React", "Finance"], image: Investment, demo: "https://investment-app-chi.vercel.app/", github: "https://github.com/iamabieyuwa/investment-app", liveDisabled: false, githubDisabled: false },
+  { name: "Amazon Clone", desc: "Amazon clone with Firebase login.", tags: ["React", "Firebase"], image: Amazon, demo: "https://challenge-8404d.web.app/", github: "#", liveDisabled: false, githubDisabled: true },
+  { name: "Dozewell Sleep App", desc: "Sleep tracking app with calming UI.", tags: ["React", "Sleep"], image: Dozewell, demo: "https://dozewell.com.ng", github: "#", liveDisabled: false, githubDisabled: true },
 ];
 
 export default function Projects() {
@@ -73,9 +73,10 @@ export default function Projects() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`flex items-center gap-1 px-2 py-1 rounded-md bg-zinc-800 text-white text-xs border border-zinc-700 hover:bg-zinc-700 transition-all ${
-                    proj.github === "#" ? "pointer-events-none opacity-50" : ""
+                    proj.githubDisabled ? "pointer-events-none opacity-50" : ""
                   }`}
                   aria-label={`View ${proj.name} source code on GitHub`}
+                  tabIndex={proj.githubDisabled ? -1 : undefined}
                 >
                   <FaGithub />
                   Code
@@ -84,8 +85,11 @@ export default function Projects() {
                   href={proj.demo}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1 px-2 py-1 rounded-md bg-gradient-to-r from-fuchsia-500 to-rose-500 text-white text-xs hover:from-fuchsia-600 hover:to-rose-600 transition-all"
+                  className={`flex items-center gap-1 px-2 py-1 rounded-md bg-gradient-to-r from-fuchsia-500 to-rose-500 text-white text-xs hover:from-fuchsia-600 hover:to-rose-600 transition-all ${
+                    proj.liveDisabled ? "pointer-events-none opacity-50" : ""
+                  }`}
                   aria-label={`View ${proj.name} live demo`}
+                  tabIndex={proj.liveDisabled ? -1 : undefined}
                 >
                   <FaExternalLinkAlt />
                   Live
