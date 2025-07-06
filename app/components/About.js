@@ -73,9 +73,9 @@ export default function About() {
           I enjoy crafting sleek, intuitive, and meaningful digital experiences.
         </p>
         <p className="text-white/90 text-xs sm:text-sm md:text-base mb-2 font-normal">
-          I'm Abieyuwa — a self-taught frontend developer and designer based in Benin City, Nigeria.
+          I&apos;m Abieyuwa — a self-taught frontend developer and designer based in Benin City, Nigeria.
           I blend creativity with code to build accessible, performant, and engaging websites.
-          With 4+ years of experience, I’m passionate about continuous learning, clean design,
+          With 4+ years of experience, I&apos;m passionate about continuous learning, clean design,
           and turning ideas into reality.
         </p>
       </div>

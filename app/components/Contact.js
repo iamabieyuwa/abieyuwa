@@ -64,7 +64,7 @@ export default function Contact() {
   return (
     <section
   id="contact"
-  className="pt-10 md:pt-32 relative flex flex-col items-center justify-center pb-10 px-2 sm:px-4 md:px-8 bg-gradient-to-b from-black via-zinc-950 to-black text-white scroll-mt-20 font-poppins md:min-h-[calc(100vh-64px)]"
+  className="sm:pt-20 md:pt-5 relative flex flex-col items-center justify-center pb-10 px-2 sm:px-4 md:px-8 bg-gradient-to-b from-black via-zinc-950 to-black text-white scroll-mt-20 font-poppins md:min-h-[calc(100vh-64px)]"
 >
 
       {/* Background Glow */}
