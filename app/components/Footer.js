@@ -26,7 +26,7 @@ const socials = [
     aria: "LinkedIn",
   },
   {
-    href: "https://x.com/iamnosakare",
+    href: "https://x.com/@iamnosakare",
     icon: <SiX />,
     aria: "X",
   },

@@ -215,7 +215,7 @@ export default function Contact() {
           <FaLinkedin />
         </a>
         <a
-          href="https://x.com/iamabieyuwa"
+          href="https://x.com/@iamabieyuwa"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="X"
