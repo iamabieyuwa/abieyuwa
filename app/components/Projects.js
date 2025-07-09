@@ -15,15 +15,16 @@ import TicTacToe from './images/TicTacToe.jpeg';
 import Investment from './images/Investment.jpeg';
 import Amazon from './images/Amazon.jpg';
 import Dozewell from './images/Dozewell.jpg';
-
+import Notes from './images/Notes.png'
 const projects = [
   { name: "Airbnb Clone", desc: "Airbnb homepage clone using React & CSS.", tags: ["React", "CSS"], image: Airbnb, demo: "https://airbnb-cl0ne.web.app/", github: "#", liveDisabled: false, githubDisabled: true },
   { name: "Hulu Clone", desc: "Hulu movie search app using public API.", tags: ["React", "API"], image: Hulu, demo: "https://hulu-cl0ne.web.app/", github: "#", liveDisabled: false, githubDisabled: true },
   { name: "Portfolio Site", desc: "Personal portfolio built with React.", tags: ["React", "Portfolio"], image: Portfolio, demo: "https://react-portfolio001.web.app/", github: "#", liveDisabled: false, githubDisabled: true },
-  { name: "Tic Tac Toe", desc: "Tic Tac Toe game with React & Tailwind.", tags: ["React", "Tailwind"], image: TicTacToe, demo: "https://tic-tac-toe-pink-five.vercel.app/", github: "https://github.com/iamabieyuwa/tic-tac-toe", liveDisabled: false, githubDisabled: false },
-  { name: "Investment App", desc: "Investment calculator with React & Tailwind.", tags: ["React", "Finance"], image: Investment, demo: "https://investment-app-chi.vercel.app/", github: "https://github.com/iamabieyuwa/investment-app", liveDisabled: false, githubDisabled: false },
+  { name: "Tic Tac Toe", desc: "Tic Tac Toe game with React & Tailwind.", tags: ["React", "Tailwind"], image: TicTacToe, demo: "https://tic-tac-toe-pink-five.vercel.app/", github: "https://github.com/iamabieyuwa/tic-tac-toe", liveDisabled: true, githubDisabled: false },
+  { name: "Investment App", desc: "Investment calculator with React & Tailwind.", tags: ["React", "Finance"], image: Investment, demo: "https://investment-app-chi.vercel.app/", github: "https://github.com/iamabieyuwa/investment-app", liveDisabled: true, githubDisabled: false },
   { name: "Amazon Clone", desc: "Amazon clone with Firebase login.", tags: ["React", "Firebase"], image: Amazon, demo: "https://challenge-8404d.web.app/", github: "#", liveDisabled: false, githubDisabled: true },
   { name: "Dozewell Sleep App", desc: "Sleep tracking app with calming UI.", tags: ["React", "Sleep"], image: Dozewell, demo: "https://dozewell.com.ng", github: "#", liveDisabled: false, githubDisabled: true },
+  {name: "Notes App", desc: "A basic notes add with seach, delete and add function", tags: ["React" ,"tailwind", "state"], image: Notes, demo: 'https://notes-app-6mvx.vercel.app', github: 'https://github.com/iamabieyuwa/notes-app', liveDisables: true, githubDisabled: false}
 ];
 
 export default function Projects() {
