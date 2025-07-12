@@ -35,14 +35,14 @@ export default function About() {
           </p>
 
           <p className="text-gray-700 text-sm sm:text-base mb-4 leading-relaxed font-sans">
-            I'm Abieyuwa — a self-taught frontend developer and designer based in Benin City,
+            I&apos;m Abieyuwa — a self-taught frontend developer and designer based in Benin City,
             Nigeria. I specialize in translating creative ideas into clean, responsive, and
             user-friendly websites.
           </p>
 
           <p className="text-gray-600 text-sm sm:text-base mb-6 leading-relaxed">
-            I'm always learning, exploring new technologies, and open to exciting challenges
-            that push me to grow. Let’s collaborate and bring your ideas to life.
+            I&apos;m always learning, exploring new technologies, and open to exciting challenges
+            that push me to grow. Let&apos;s collaborate and bring your ideas to life.
           </p>
 
           {/* Animated Stats Section */}
