@@ -4,43 +4,30 @@
 @import "@fontsource/poppins/700.css";
 html { scroll-behavior: smooth; }
 
-.projects-swiper-pagination {
-  display: flex !important;
-  justify-content: center;
-  align-items: center;
-  gap: 0.2rem;
-  margin-top: 0.1rem;
-  position: relative;
-  z-index: 10;
-}
-.projects-custom-dot {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  background: #888;
-  border-radius: 9999px;
-  margin: 0 4px;
-  transition: background 0.3s ease;
+
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
 }
 
-.projects-custom-dot-active {
-  background: #ec4899; /* pink-500 */
+.animate-blob {
+  animation: blob 15s infinite;
 }
 
-.swiper-pagination-bullet {
-  width: 12px !important;
-  height: 12px !important;
-  border-radius: 50% !important;
-  background: #27272a !important; /* Light black for inactive */
-  opacity: 1 !important;
-  border: none !important;
-  margin: 0 6px !important;
-  display: inline-block !important;
-  cursor: pointer !important;
-  transition: background 0.2s, box-shadow 0.2s !important;
+.animation-delay-2000 {
+  animation-delay: 2s;
 }
 
-.swiper-pagination-bullet-active {
-  background: #ec4899 !important; /* Pink for active */
-  box-shadow: 0 0 6px #ec4899cc, 0 0 2px #f472b666 !important;
+.animation-delay-4000 {
+  animation-delay: 4s;
 }
