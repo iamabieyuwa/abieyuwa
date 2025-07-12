@@ -44,7 +44,6 @@ export default function RootLayout({ children }) {
     <html lang="en" >
       <Head className='scroll-smooth'>
         {/* Canonical */}
-        <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet" />
         <link rel="canonical" href="https://abieyuwa.vercel.app/" />
         {/* Favicon */}
         <link rel="icon" href="/favicon.ico" />
@@ -73,7 +72,7 @@ export default function RootLayout({ children }) {
           }}
         />
       </Head>
-      <body className="font-poppins">
+      <body className="font-sans">
         <Navbar />
         {children}
       </body>

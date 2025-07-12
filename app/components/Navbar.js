@@ -81,7 +81,7 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* Mobile Menu Button (Right aligned) */}
+        {/* Mobile Menu Button */}
         <button
           onClick={() => setOpen((prev) => !prev)}
           className="sm:hidden ml-auto text-gray-800 text-xl p-2 rounded-full hover:bg-gray-100"
@@ -100,18 +100,20 @@ export default function Navbar() {
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.25 }}
             className="fixed top-20 left-1/2 -translate-x-1/2 z-40
-              bg-white border border-gray-200 shadow-xl rounded-2xl 
-              py-4 px-6 flex flex-col items-center gap-4 w-64 sm:hidden"
+              bg-white shadow-xl rounded-2xl py-5 px-6 flex flex-col 
+              items-stretch gap-4 w-[85%] max-w-[280px] sm:hidden
+              border border-gray-100 backdrop-blur-md"
           >
             {navLinks.map(({ name, href, icon: Icon }) => (
               <a
                 key={name}
                 href={href}
                 onClick={() => setOpen(false)}
-                className="flex items-center gap-3 text-gray-800 hover:text-pink-500 transition"
+                className="flex items-center gap-3 px-4 py-2 rounded-lg text-gray-800 
+                hover:bg-pink-100 hover:text-pink-600 transition-all duration-200"
               >
-                <Icon className="h-6 w-6" />
-                <span className="text-sm font-medium">{name}</span>
+                <Icon className="h-5 w-5" />
+                <span className="text-base font-medium">{name}</span>
               </a>
             ))}
           </motion.div>
