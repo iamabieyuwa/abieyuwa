@@ -1,8 +1,15 @@
-import Head from "next/head";
-import Navbar from "./components/Navbar";
 import "./globals.css";
+import "@fontsource/sora/400.css";
+import "@fontsource/sora/600.css";
+import "@fontsource/poppins/400.css";
+import "@fontsource/poppins/600.css";
+import "@fontsource/outfit/400.css";
+import "@fontsource/outfit/600.css";
+// Optional: Add other fonts here as needed
 
-// Advanced metadata for SEO and social
+import Navbar from "./components/Navbar";
+
+// Remove Head from here – Next.js handles it via metadata
 export const metadata = {
   title: "Abieyuwa Imina | Portfolio",
   description:
@@ -19,7 +26,7 @@ export const metadata = {
     siteName: "Abieyuwa Imina Portfolio",
     images: [
       {
-        url: "/og-image.jpg", // Ensure this image exists in /public
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Abieyuwa Imina Portfolio",
@@ -41,38 +48,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" >
-      <Head className='scroll-smooth'>
-        {/* Canonical */}
-        <link rel="canonical" href="https://abieyuwa.vercel.app/" />
-        {/* Favicon */}
-        <link rel="icon" href="/favicon.ico" />
-        {/* Schema.org Person Structured Data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Person",
-              name: "Abieyuwa Imina",
-              url: "https://abieyuwa.vercel.app",
-              sameAs: [
-                "https://www.linkedin.com/in/abieyuwa-imina",
-                "https://twitter.com/iamabieyuwa"
-              ],
-              jobTitle: "Frontend Engineer & Student",
-              worksFor: {
-                "@type": "CollegeOrUniversity",
-                name: "University of Benin"
-              },
-              image: "https://abieyuwa.vercel.app/og-image.jpg",
-              description: "Frontend engineer and student at University of Benin, passionate about crafting delightful web experiences using React, Next.js, and modern web technologies.",
-              email: "mailto:heisyuwa@gmail.com"
-            }),
-          }}
-        />
-      </Head>
-      <body className="font-sans">
+    <html lang="en" className="scroll-smooth">
+      <body className="font-sora">
         <Navbar />
         {children}
       </body>

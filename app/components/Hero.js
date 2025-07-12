@@ -27,7 +27,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="relative z-10 max-w-5xl w-full px-2 sm:px-4"
+        className="relative z-10 max-w-5xl w-full px-2 sm:px-4 font-outfit"
       >
         <h1 className="text-4xl sm:text-2xl md:text-3xl lg:text-5xl font-black text-gray-800 leading-tight mb-5 font-sans">
           {"Hey, I'm "}

@@ -4,10 +4,9 @@ import { motion } from "framer-motion";
 import CountUp from "react-countup";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import "@fontsource/poppins/400.css";
-import "@fontsource/poppins/600.css";
-import "@fontsource/poppins/700.css";
 import Skills from "./Skills";
+import "@fontsource/outfit/400.css";
+import "@fontsource/outfit/600.css";
 
 export default function About() {
   useEffect(() => {
@@ -20,21 +19,20 @@ export default function About() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
       id="about"
-      className="relative min-h-screen px-4 py-24 bg-white text-black overflow-hidden font-sans lg:mt-8"
+      className="relative min-h-screen px-4 py-24 bg-white text-black overflow-hidden font-outfit lg:mt-8"
     >
-      {/* Content */}
-      <div className="relative z-10 max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10 md:gap-16 text-center md:text-left">
+      <div className=" font-outfit relative z-10 max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10 md:gap-16 text-center md:text-left">
         {/* Text Content */}
         <div className="flex-1" data-aos="fade-up">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-4 tracking-tight">
             About
           </h2>
 
-          <p className="text-gray-800 text-sm sm:text-base md:text-lg font-medium mb-3 font-sans">
+          <p className="text-gray-800 text-sm sm:text-base md:text-lg font-medium mb-3">
             I enjoy crafting sleek, intuitive, and meaningful digital experiences.
           </p>
 
-          <p className="text-gray-700 text-sm sm:text-base mb-4 leading-relaxed font-sans">
+          <p className="text-gray-800 text-sm sm:text-base mb-3 font-medium">
             I&apos;m Abieyuwa — a self-taught frontend developer and designer based in Benin City,
             Nigeria. I specialize in translating creative ideas into clean, responsive, and
             user-friendly websites.
@@ -45,7 +43,7 @@ export default function About() {
             that push me to grow. Let&apos;s collaborate and bring your ideas to life.
           </p>
 
-          {/* Animated Stats Section */}
+          {/* Stats */}
           <div className="flex justify-center md:justify-start gap-6 sm:gap-10 mt-4">
             <div className="text-center">
               <p className="text-2xl sm:text-3xl font-bold text-pink-500">
@@ -68,7 +66,7 @@ export default function About() {
           </div>
         </div>
 
-        {/* Image Section */}
+        {/* Image */}
         <motion.div
           className="flex-1 flex justify-center md:justify-end"
           data-aos="fade-left"
