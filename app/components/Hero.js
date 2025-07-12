@@ -75,7 +75,7 @@ export default function Hero() {
         {/* Social Icons */}
         <div className="flex justify-center gap-5 mt-8 text-grey-500">
           <a
-            href="https://github.com/"
+            href="https://github.com/iamabieyuwa"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
@@ -84,7 +84,7 @@ export default function Hero() {
             <FaGithub size={22} />
           </a>
           <a
-            href="https://linkedin.com/"
+            href="https://linkedin.com/abieyuwa-imina"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
@@ -100,7 +100,7 @@ export default function Hero() {
             <FaEnvelope size={22} />
           </a>
           <a
-            href="https://x.com/iamnosakare"
+            href="https://x.com/@abieyuwaimina"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="X (Twitter)"
