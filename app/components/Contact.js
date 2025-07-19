@@ -167,7 +167,7 @@ export default function Contact() {
         <a
           href="mailto:heisyuwa@gmail.com"
           aria-label="Email"
-          className="text-xl text-pink-500 hover:scale-110 transition"
+          className="text-xl text-black-500 hover:scale-110 transition"
         >
           <FaEnvelope />
         </a>
@@ -176,7 +176,7 @@ export default function Contact() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="LinkedIn"
-          className="text-xl text-pink-500 hover:scale-110 transition"
+          className="text-xl text-black-500 hover:scale-110 transition"
         >
           <FaLinkedin />
         </a>
@@ -185,7 +185,7 @@ export default function Contact() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="X"
-          className="text-xl text-pink-500 hover:scale-110 transition"
+          className="text-xl text-black-500 hover:scale-110 transition"
         >
           <SiX />
         </a>
@@ -194,7 +194,7 @@ export default function Contact() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="GitHub"
-          className="text-xl text-pink-500 hover:scale-110 transition"
+          className="text-xl text-black-500 hover:scale-110 transition"
         >
           <FaGithub />
         </a>
