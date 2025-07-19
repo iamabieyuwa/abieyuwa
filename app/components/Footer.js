@@ -21,12 +21,12 @@ const socials = [
     aria: "Email",
   },
   {
-    href: "https://linkedin.com/in/abieyuwa-imna",
+    href: "https://linkedin.com/in/abieyuwa-imina",
     icon: <FaLinkedin />,
     aria: "LinkedIn",
   },
   {
-    href: "https://x.com/@iamnosakare",
+    href: "https://x.com/@abieyuwaimina",
     icon: <SiX />,
     aria: "X",
   },

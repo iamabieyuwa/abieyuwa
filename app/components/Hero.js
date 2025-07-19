@@ -84,7 +84,7 @@ export default function Hero() {
             <FaGithub size={22} />
           </a>
           <a
-            href="https://linkedin.com/abieyuwa-imina"
+            href="https://linkedin.com/in/abieyuwa-imina"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
