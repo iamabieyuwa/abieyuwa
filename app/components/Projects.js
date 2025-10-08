@@ -18,8 +18,32 @@ import Investment from './images/Investment.jpeg';
 import Amazon from './images/Amazon.jpg';
 import Dozewell from './images/Dozewell.jpg';
 import Notes from './images/Notes.png';
-
+import PostPilot from './images/PostPilot.png'
+import Homiq from './images/Homiq.png'
 const projects = [
+  {
+  name: "PostPilot",
+  desc: "A modern social media post scheduler built with Next.js and Firebase. Features AI-assisted post creation, scheduling, media uploads, and account management — all with a clean, responsive dashboard UI.",
+  tags: ["Next.js", "Firebase", "Tailwind CSS", "React"],
+  image: PostPilot, 
+  demo: "https://post-scheduler-pearl.vercel.app/",
+  github: "https://github.com/iamabieyuwa/post-scheduler",
+  liveDisabled: false,
+  githubDisabled: false,
+},
+
+{
+  name: "Real Estate Website",
+  desc: "A sleek, Nigerian-based property listing platform inspired by Jiji. Built with React and Tailwind CSS, featuring property search, agent login, and responsive layouts for a modern browsing experience.",
+  tags: ["React", "Tailwind CSS"],
+  image: Homiq,
+  demo: "homiq-web.vercel.app/",
+  github: "https://github.com/iamabieyuwa/homiq-web", // update with actual repo
+  liveDisabled: false,
+  githubDisabled: false,
+},
+
+
   {
     name: "Airbnb Clone",
     desc: "A polished Airbnb homepage clone using React and CSS. Built with reusable components, dynamic search, and responsive layout design.",
