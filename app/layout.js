@@ -46,6 +46,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">
       <Head>
+      <title>Abieyuwa Imina | Portfolio</title>
+
         {/* Canonical */}
         <link rel="canonical" href="https://abieyuwa.vercel.app" />
         <link rel="icon" href="/favicon.ico" />
