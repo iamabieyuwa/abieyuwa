@@ -43,7 +43,16 @@ const projects = [
   githubDisabled: false,
 },
 
-
+{
+    name: "Dozewell Sleep App",
+    desc: "Sleep app with a relaxing UI built for tracking sleep sessions. Built using React.",
+    tags: ["React", "UI"],
+    image: Dozewell,
+    demo: "https://dozewell.com.ng",
+    github: "#",
+    liveDisabled: false,
+    githubDisabled: true,
+  },
   {
     name: "Airbnb Clone",
     desc: "A polished Airbnb homepage clone using React and CSS. Built with reusable components, dynamic search, and responsive layout design.",
@@ -104,16 +113,7 @@ const projects = [
     liveDisabled: false,
     githubDisabled: true,
   },
-  {
-    name: "Dozewell Sleep App",
-    desc: "Sleep app with a relaxing UI built for tracking sleep sessions. Built using React.",
-    tags: ["React", "UI"],
-    image: Dozewell,
-    demo: "https://dozewell.com.ng",
-    github: "#",
-    liveDisabled: false,
-    githubDisabled: true,
-  },
+  
   {
     name: "Notes App",
     desc: "Basic notes app with add, search, and delete functionality. Uses local storage.",
