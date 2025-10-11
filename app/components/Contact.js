@@ -98,7 +98,7 @@ export default function Contact() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1, duration: 0.6 }}
       >
-        I'm currently open to new **Frontend Engineering** opportunities. Let's discuss your project, collaboration idea, or just chat about **React** and **Next.js** development.
+        I&apos;m currently open to new **Frontend Engineering** opportunities. Let&apos;s discuss your project, collaboration idea, or just chat about **React** and **Next.js** development.
       </motion.p>
 
       {/* Main Content Grid: Contact Info (Left) and Form (Right) */}
@@ -245,7 +245,7 @@ export default function Contact() {
               animate={{ opacity: 1, y: 0 }}
             >
               <FaCheckCircle className="text-green-500 text-lg" />
-              Success! I'll get back to you as soon as possible.
+              Success! I&apos;ll get back to you as soon as possible.
             </motion.p>
           )}
           {status === "error" && (
@@ -264,7 +264,7 @@ export default function Contact() {
   );
 }
 
-// Helper component (unchanged, but included for completeness)
+// Helper component
 const ContactInfoItem = ({ icon, title, value, href }) => (
     <a 
         href={href} 
