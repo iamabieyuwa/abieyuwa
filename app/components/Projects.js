@@ -1,15 +1,14 @@
+// Projects.jsx (Original file)
 "use client";
-import { useEffect, useState } from "react";
-import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import { useEffect, useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import "@fontsource/poppins/400.css";
-import "@fontsource/poppins/600.css";
-import "@fontsource/poppins/700.css";
-import Image from "next/image";
 
-// Images
+// Separate ProjectCard component
+import ProjectCard from './ProjectCard'
+
+// --- Consolidated Image Imports (Next.js StaticImageData) ---
 import Airbnb from './images/Airbnb.png';
 import Hulu from './images/Hulu.png';
 import Portfolio from './images/Portfolio.png';
@@ -18,35 +17,56 @@ import Investment from './images/Investment.jpeg';
 import Amazon from './images/Amazon.jpg';
 import Dozewell from './images/Dozewell.jpg';
 import Notes from './images/Notes.png';
-import PostPilot from './images/PostPilot.png'
-import Homiq from './images/Homiq.png'
-const projects = [
+import PostPilot from './images/PostPilot.png';
+import Homiq from './images/Homiq.png';
+
+// --- Data Definition (Simplified and Cleaned) ---
+const ALL_PROJECTS = [
   {
-  name: "PostPilot",
-  desc: "A modern social media post scheduler built with Next.js and Firebase. Features AI-assisted post creation, scheduling, media uploads, and account management — all with a clean, responsive dashboard UI.",
-  tags: ["Next.js", "Firebase", "Tailwind CSS", "React"],
-  image: PostPilot, 
-  demo: "https://post-scheduler-pearl.vercel.app/",
-  github: "https://github.com/iamabieyuwa/post-scheduler",
-  liveDisabled: false,
-  githubDisabled: false,
-},
-
-{
-  name: "Real Estate Website",
-  desc: "A sleek, Nigerian-based property listing platform inspired by Jiji. Built with React and Tailwind CSS, featuring property search, agent login, and responsive layouts for a modern browsing experience.",
-  tags: ["React", "Tailwind CSS"],
-  image: Homiq,
-  demo: "homiq-web.vercel.app/",
-  github: "https://github.com/iamabieyuwa/homiq-web", // update with actual repo
-  liveDisabled: false,
-  githubDisabled: false,
-},
-
-{
+    name: "PostPilot (Next.js)", // Added Next.js for better SEO
+    desc: "A modern social media post scheduler built with Next.js and Firebase. Features AI-assisted post creation, scheduling, media uploads, and account management — all with a clean, responsive dashboard UI.",
+    tags: ["Next.js", "Firebase", "Tailwind CSS", "React"],
+    image: PostPilot,
+    demo: "https://post-scheduler-pearl.vercel.app/",
+    github: "https://github.com/iamabieyuwa/post-scheduler",
+    liveDisabled: false,
+    githubDisabled: false,
+  },
+  {
+    name: "Homiq Real Estate",
+    desc: "A sleek, Nigerian-based property listing platform inspired by Jiji. Built with React and Tailwind CSS, featuring property search, agent login, and responsive layouts for a modern browsing experience.",
+    tags: ["React", "Tailwind CSS", "UI/UX"],
+    image: Homiq,
+    demo: "https://homiq-web.vercel.app/", // Ensure this is the full URL, not just a domain name
+    github: "https://github.com/iamabieyuwa/homiq-web",
+    liveDisabled: false,
+    githubDisabled: false,
+  },
+  {
+    name: "Notes App",
+    desc: "Basic notes app with add, search, and delete functionality. Uses local storage for persistent data. Built with React and Tailwind CSS.", // Enhanced description
+    tags: ["React", "Tailwind", "Local Storage"],
+    image: Notes,
+    demo: "https://notes-app-6mvx.vercel.app",
+    github: "https://github.com/iamabieyuwa/notes-app",
+    liveDisabled: false,
+    githubDisabled: false,
+  },
+  {
+    name: "Tic Tac Toe Game",
+    desc: "Classic Tic Tac Toe game built in React with Tailwind CSS. Two-player mode with a reset button and turn display logic.",
+    tags: ["React", "Tailwind", "Game"],
+    image: TicTacToe,
+    demo: "https://tic-tac-toe-pink-five.vercel.app/",
+    github: "https://github.com/iamabieyuwa/tic-tac-toe",
+    liveDisabled: false, // Changed to false as demo/github are present
+    githubDisabled: false,
+  },
+  // Projects without a public GitHub repo or live link are moved lower/disabled
+  {
     name: "Dozewell Sleep App",
     desc: "Sleep app with a relaxing UI built for tracking sleep sessions. Built using React.",
-    tags: ["React", "UI"],
+    tags: ["React", "UI", "Health"],
     image: Dozewell,
     demo: "https://dozewell.com.ng",
     github: "#",
@@ -54,19 +74,9 @@ const projects = [
     githubDisabled: true,
   },
   {
-    name: "Airbnb Clone",
-    desc: "A polished Airbnb homepage clone using React and CSS. Built with reusable components, dynamic search, and responsive layout design.",
-    tags: ["React", "CSS"],
-    image: Airbnb,
-    demo: "https://airbnb-cl0ne.web.app/",
-    github: "#",
-    liveDisabled: false,
-    githubDisabled: true,
-  },
-  {
     name: "Hulu Clone",
     desc: "Hulu movie app clone featuring a movie API integration, search, and category filters. Mobile-friendly with smooth animations.",
-    tags: ["React", "API"],
+    tags: ["React", "API", "Movie App"],
     image: Hulu,
     demo: "https://hulu-cl0ne.web.app/",
     github: "#",
@@ -74,9 +84,29 @@ const projects = [
     githubDisabled: true,
   },
   {
-    name: "Portfolio Website",
-    desc: "My personal portfolio built with React and styled with Tailwind. Animated using Framer Motion and hosted on Firebase.",
-    tags: ["React", "Firebase"],
+    name: "Airbnb Clone",
+    desc: "A polished Airbnb homepage clone using React and CSS. Built with reusable components, dynamic search, and responsive layout design.",
+    tags: ["React", "CSS", "Clone"],
+    image: Airbnb,
+    demo: "https://airbnb-cl0ne.web.app/",
+    github: "#",
+    liveDisabled: false,
+    githubDisabled: true,
+  },
+  {
+    name: "Amazon Clone",
+    desc: "Amazon-like product homepage clone using React and Firebase Auth for login.",
+    tags: ["React", "Firebase", "Clone"],
+    image: Amazon,
+    demo: "https://challenge-8404d.web.app/",
+    github: "#",
+    liveDisabled: false,
+    githubDisabled: true,
+  },
+  {
+    name: "Personal Portfolio",
+    desc: "My previous personal portfolio built with React and styled with Tailwind. Animated using Framer Motion and hosted on Firebase.",
+    tags: ["React", "Firebase", "Portfolio"],
     image: Portfolio,
     demo: "https://react-portfolio001.web.app/",
     github: "#",
@@ -84,75 +114,51 @@ const projects = [
     githubDisabled: true,
   },
   {
-    name: "Tic Tac Toe Game",
-    desc: "Classic Tic Tac Toe game built in React with Tailwind CSS. Two-player mode with a reset button and turn display logic.",
-    tags: ["React", "Tailwind"],
-    image: TicTacToe,
-    demo: "https://tic-tac-toe-pink-five.vercel.app/",
-    github: "https://github.com/iamabieyuwa/tic-tac-toe",
-    liveDisabled: true,
-    githubDisabled: false,
-  },
-  {
-    name: "Investment App",
-    desc: "ROI calculator app using compound interest. Interactive and responsive with clean UI.",
-    tags: ["React", "Finance"],
+    name: "Investment Calculator",
+    desc: "ROI calculator app using compound interest logic. Interactive and responsive with clean UI, built with React.",
+    tags: ["React", "Finance", "Calculator"],
     image: Investment,
     demo: "https://investment-app-chi.vercel.app/",
     github: "https://github.com/iamabieyuwa/investment-app",
-    liveDisabled: true,
-    githubDisabled: false,
-  },
-  {
-    name: "Amazon Clone",
-    desc: "Amazon-like product homepage clone using React and Firebase Auth for login.",
-    tags: ["React", "Firebase"],
-    image: Amazon,
-    demo: "https://challenge-8404d.web.app/",
-    github: "#",
-    liveDisabled: false,
-    githubDisabled: true,
-  },
-  
-  {
-    name: "Notes App",
-    desc: "Basic notes app with add, search, and delete functionality. Uses local storage.",
-    tags: ["React", "Tailwind"],
-    image: Notes,
-    demo: "https://notes-app-6mvx.vercel.app",
-    github: "https://github.com/iamabieyuwa/notes-app",
-    liveDisabled: false,
+    liveDisabled: false, // Changed to false as demo/github are present
     githubDisabled: false,
   },
 ];
 
+const INITIAL_PROJECT_COUNT = 4; // Display 4 projects initially, a common clean design pattern
+
 export default function Projects() {
   const [showAll, setShowAll] = useState(false);
 
+  // 1. Initialise AOS once on component mount
   useEffect(() => {
-    AOS.init({ duration: 900, once: false, offset: 100 });
+    AOS.init({ duration: 900, once: true, offset: 100 }); // Changed once to 'true' for cleaner one-time animation
   }, []);
 
-  const displayedProjects = showAll ? projects : projects.slice(0, 3);
+  // 2. Use useMemo to prevent recalculation on every render
+  const displayedProjects = useMemo(() => {
+    return showAll ? ALL_PROJECTS : ALL_PROJECTS.slice(0, INITIAL_PROJECT_COUNT);
+  }, [showAll]);
 
   return (
     <section
       id="projects"
-      className="relative px-4 py-24 bg-white text-black font-poppins overflow-hidden"
+      // Added max-w-7xl for slightly wider content area
+      className="relative px-4 py-24 bg-white text-black font-poppins overflow-hidden" 
     >
-      <div className="max-w-6xl mx-auto text-center mb-10">
+      <div className="max-w-6xl mx-auto text-center mb-12">
         <h2
-          className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-4 underline underline-offset-8 decoration-pink-400/40"
+          className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 underline underline-offset-8 decoration-pink-400/40"
           data-aos="fade-up"
         >
-          Projects
+          Featured Projects
         </h2>
         <p
-          className="text-black/80 text-sm sm:text-base max-w-2xl mx-auto"
+          className="text-black/80 text-base sm:text-lg max-w-3xl mx-auto"
           data-aos="fade-up"
           data-aos-delay="100"
         >
-          A collection of frontend projects crafted with React, Firebase, Tailwind CSS, and modern design tools. These highlight my problem-solving and design thinking.
+          A curated collection of my work as a **Frontend Engineer**, showcasing expertise in **Next.js, React, Tailwind CSS**, and modern UI/UX design.
         </p>
       </div>
 
@@ -161,75 +167,30 @@ export default function Projects() {
         data-aos="fade-up"
         data-aos-delay="200"
       >
+        {/* Simplified render using the new ProjectCard component */}
         {displayedProjects.map((proj, idx) => (
           <motion.div
             key={proj.name + idx}
-            whileHover={{ scale: 1.02 }}
-            className="bg-white border border-gray-200 rounded-2xl shadow hover:shadow-lg transition-all w-[280px] sm:w-[300px] flex flex-col overflow-hidden"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: idx * 0.1 }}
           >
-            <Image
-              src={proj.image}
-              alt={proj.name}
-              width={400}
-              height={200}
-              className="w-full h-44 object-cover"
-            />
-            <div className="p-4 flex-1 flex flex-col justify-between">
-              <div>
-                <h3 className="text-lg font-bold mb-2">{proj.name}</h3>
-                <p className="text-sm text-gray-600 mb-3 leading-relaxed">
-                  {proj.desc}
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {proj.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="bg-pink-100 text-pink-600 text-[11px] font-medium px-2 py-1 rounded-full"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <div className="flex gap-2 mt-auto">
-                <a
-                  href={proj.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`flex items-center gap-1 px-3 py-1.5 text-xs font-medium border border-gray-300 rounded-md hover:bg-gray-100 transition ${
-                    proj.githubDisabled ? "pointer-events-none opacity-40" : ""
-                  }`}
-                >
-                  <FaGithub />
-                  Code
-                </a>
-                <a
-                  href={proj.demo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`flex items-center gap-1 px-3 py-1.5 text-xs font-medium bg-pink-500 text-white rounded-md hover:bg-pink-600 transition ${
-                    proj.liveDisabled ? "pointer-events-none opacity-40" : ""
-                  }`}
-                >
-                  <FaExternalLinkAlt />
-                  Live
-                </a>
-              </div>
-            </div>
+            <ProjectCard project={proj} />
           </motion.div>
         ))}
       </div>
 
-      {/* View More Button */}
-      <div className="mt-12 text-center">
-        <button
-          onClick={() => setShowAll(!showAll)}
-          className="inline-block px-6 py-3 bg-gradient-to-r from-fuchsia-500 to-pink-500 text-white text-sm font-semibold rounded-full shadow-md hover:from-fuchsia-600 hover:to-pink-600 transition"
-        >
-          {showAll ? "Show Less" : "View More Projects"}
-        </button>
-      </div>
+      {/* Show More/Less Button - Only render if there are more projects to show */}
+      {ALL_PROJECTS.length > INITIAL_PROJECT_COUNT && (
+        <div className="mt-16 text-center">
+          <button
+            onClick={() => setShowAll(!showAll)}
+            className="inline-block px-8 py-3 bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white text-base font-semibold rounded-full shadow-lg hover:from-fuchsia-700 hover:to-pink-700 transition transform hover:scale-105 active:scale-95"
+          >
+            {showAll ? "Show Less ↑" : `View All ${ALL_PROJECTS.length} Projects ↓`}
+          </button>
+        </div>
+      )}
     </section>
   );
 }

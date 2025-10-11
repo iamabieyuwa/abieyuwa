@@ -7,10 +7,12 @@ import "aos/dist/aos.css";
 import Skills from "./Skills";
 import "@fontsource/outfit/400.css";
 import "@fontsource/outfit/600.css";
+import Image from "next/image"; // Import Next.js Image component
 
 export default function About() {
   useEffect(() => {
-    AOS.init({ duration: 900, once: false, offset: 100 });
+    // Only run AOS once, as the component itself uses Framer Motion's initial/animate
+    AOS.init({ duration: 900, once: true, offset: 100 }); 
   }, []);
 
   return (
@@ -19,67 +21,78 @@ export default function About() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
       id="about"
-      className="relative min-h-screen px-4 py-24 bg-white text-black overflow-hidden font-outfit lg:mt-8"
+      // Added light background gradient for depth and padding adjustments
+      className="relative min-h-screen px-4 py-32 bg-gray-50 text-black overflow-hidden font-outfit"
     >
-      <div className=" font-outfit relative z-10 max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10 md:gap-16 text-center md:text-left">
+      <div className="relative z-10 max-w-6xl mx-auto flex flex-col md:flex-row items-start justify-between gap-12 md:gap-16">
         {/* Text Content */}
-        <div className="flex-1" data-aos="fade-up">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-4 tracking-tight">
-            About
+        <div className="flex-1" data-aos="fade-right">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 tracking-tight text-gray-900">
+            About <span className="text-pink-600">Me</span>
           </h2>
 
-          <p className="text-gray-800 text-sm sm:text-base md:text-lg font-medium mb-3">
+          <p className="text-gray-900 text-lg sm:text-xl md:text-2xl font-semibold mb-4 border-l-4 border-pink-500 pl-3">
             I enjoy crafting sleek, intuitive, and meaningful digital experiences.
           </p>
 
-          <p className="text-gray-800 text-sm sm:text-base mb-3 font-medium">
-            I&apos;m Abieyuwa — a self-taught frontend developer and designer based in Benin City,
-            Nigeria. I specialize in translating creative ideas into clean, responsive, and
-            user-friendly websites.
+          <p className="text-gray-700 text-sm sm:text-base mb-4 leading-relaxed">
+            I&apos;m **Abieyuwa** — a passionate **self-taught Frontend Engineer** and designer based in Benin City, Nigeria. I specialize in translating creative ideas into clean, high-performance, and **user-friendly websites** using modern frameworks like **React** and **Next.js**.
           </p>
 
-          <p className="text-gray-600 text-sm sm:text-base mb-6 leading-relaxed">
-            I&apos;m always learning, exploring new technologies, and open to exciting challenges
-            that push me to grow. Let&apos;s collaborate and bring your ideas to life.
+          <p className="text-gray-600 text-sm sm:text-base mb-8 leading-relaxed">
+            I&apos;m always learning, exploring new technologies, and open to exciting challenges that push me to grow. My focus is on delivering projects with exceptional attention to detail and a commitment to **clean code** and **responsive design**. Let&apos;s collaborate and bring your ideas to life.
           </p>
 
-          {/* Stats */}
-          <div className="flex justify-center md:justify-start gap-6 sm:gap-10 mt-4">
-            <div className="text-center">
-              <p className="text-2xl sm:text-3xl font-bold text-pink-500">
-                <CountUp end={12} duration={2} />+
+          {/* Stats - Enhanced with gradient text and subtle shadows */}
+          <div className="flex justify-start gap-8 sm:gap-12 mt-6 p-4 border-t border-b border-pink-100 bg-white shadow-inner rounded-lg">
+            <div className="text-left">
+              <p className="text-3xl sm:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-pink-600 to-fuchsia-600 drop-shadow-sm">
+                <CountUp end={15} duration={2} enableScrollSpy scrollSpyOnce />+
               </p>
-              <p className="text-sm sm:text-base text-gray-700">Projects Completed</p>
+              <p className="text-sm sm:text-base text-gray-700 font-medium tracking-wider">
+                Projects Completed
+              </p>
             </div>
-            <div className="text-center">
-              <p className="text-2xl sm:text-3xl font-bold text-pink-500">
-                <CountUp end={10} duration={2} />+
+            <div className="text-left">
+              <p className="text-3xl sm:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-pink-600 to-fuchsia-600 drop-shadow-sm">
+                <CountUp end={12} duration={2} enableScrollSpy scrollSpyOnce />+
               </p>
-              <p className="text-sm sm:text-base text-gray-700">Clients Served</p>
+              <p className="text-sm sm:text-base text-gray-700 font-medium tracking-wider">
+                Happy Collaborators
+              </p>
             </div>
-            <div className="text-center">
-              <p className="text-2xl sm:text-3xl font-bold text-pink-500">
-                <CountUp end={4} duration={2} />+
+            <div className="text-left">
+              <p className="text-3xl sm:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-pink-600 to-fuchsia-600 drop-shadow-sm">
+                <CountUp end={4} duration={2} enableScrollSpy scrollSpyOnce />+
               </p>
-              <p className="text-sm sm:text-base text-gray-700">Years Experience</p>
+              <p className="text-sm sm:text-base text-gray-700 font-medium tracking-wider">
+                Years Experience
+              </p>
             </div>
           </div>
         </div>
 
-        {/* Image */}
+        {/* Image - Enhanced Styling */}
         <motion.div
-          className="flex-1 flex justify-center md:justify-end"
+          className="w-full md:w-auto flex justify-center md:justify-end mt-8 md:mt-0 relative"
           data-aos="fade-left"
         >
-          <img
+          {/* Decorative Pink Square Background */}
+          <div className="absolute top-4 left-4 sm:top-6 sm:left-6 w-[250px] h-[250px] sm:w-[350px] sm:h-[350px] bg-pink-200/50 rounded-2xl -z-0 transform rotate-2 shadow-2xl transition-all duration-500"></div>
+          
+          <Image
             src="/me1.png"
-            alt="Abieyuwa"
-            className="w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] object-cover rounded-xl border-4 border-pink-400 shadow-lg"
+            alt="Abieyuwa Imina, Frontend Engineer" // Enhanced alt text for SEO
+            width={350} // Use Next/Image for better performance
+            height={350} // Aspect ratio is 1:1, so width and height are the same
+            className="w-[250px] h-[250px] sm:w-[350px] sm:h-[350px] object-cover rounded-2xl border-4 border-white shadow-xl relative z-10 transition-transform duration-500 hover:-translate-y-1 hover:shadow-2xl"
           />
         </motion.div>
       </div>
 
-      <Skills />
+      <div className="mt-20">
+        <Skills />
+      </div>
     </motion.section>
   );
 }
