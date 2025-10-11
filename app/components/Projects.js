@@ -57,9 +57,9 @@ const ALL_PROJECTS = [
     desc: "Classic Tic Tac Toe game built in React with Tailwind CSS. Two-player mode with a reset button and turn display logic.",
     tags: ["React", "Tailwind", "Game"],
     image: TicTacToe,
-    demo: "https://tic-tac-toe-pink-five.vercel.app/",
+    demo: "#",
     github: "https://github.com/iamabieyuwa/tic-tac-toe",
-    liveDisabled: false, // Changed to false as demo/github are present
+    liveDisabled: true, // Changed to false as demo/github are present
     githubDisabled: false,
   },
   // Projects without a public GitHub repo or live link are moved lower/disabled
@@ -120,7 +120,7 @@ const ALL_PROJECTS = [
     image: Investment,
     demo: "https://investment-app-chi.vercel.app/",
     github: "https://github.com/iamabieyuwa/investment-app",
-    liveDisabled: false, // Changed to false as demo/github are present
+    liveDisabled: true, // Changed to false as demo/github are present
     githubDisabled: false,
   },
 ];
