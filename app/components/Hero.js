@@ -63,7 +63,7 @@ export default function Hero() {
         </h1>
 
         <p className="mx-auto max-w-3xl text-base sm:text-lg md:text-xl text-gray-600 font-medium leading-relaxed mt-4 mb-10">
-          I specialize in building **high-performance**, **SEO-friendly** web applications. I transform modern design ideas into clean, functional experiences using **React, Next.js,** and **Tailwind CSS**.
+          I specialize in building high-performance, SEO-friendly web applications. I transform modern design ideas into clean, functional experiences using React, Next.js, and Tailwind CSS.
         </p>
 
         {/* 2. Buttons - Use a more consistent gradient style */}
