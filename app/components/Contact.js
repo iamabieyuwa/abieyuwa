@@ -98,7 +98,7 @@ export default function Contact() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1, duration: 0.6 }}
       >
-        I&apos;m currently open to new **Frontend Engineering** opportunities. Let&apos;s discuss your project, collaboration idea, or just chat about **React** and **Next.js** development.
+        I&apos;m currently open to new Frontend Engineering opportunities. Let&apos;s discuss your project, collaboration idea, or just chat about React and Next.js development.
       </motion.p>
 
       {/* Main Content Grid: Contact Info (Left) and Form (Right) */}

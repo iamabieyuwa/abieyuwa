@@ -158,7 +158,7 @@ export default function Projects() {
           data-aos="fade-up"
           data-aos-delay="100"
         >
-          A curated collection of my work as a **Frontend Engineer**, showcasing expertise in **Next.js, React, Tailwind CSS**, and modern UI/UX design.
+          A curated collection of my work as a Frontend Engineer, showcasing expertise in Next.js, React, Tailwind CSS, and modern UI/UX design.
         </p>
       </div>
 
