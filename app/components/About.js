@@ -25,7 +25,7 @@ export default function About() {
       className="relative min-h-screen px-4 py-32 bg-gray-50 text-black overflow-hidden font-outfit"
     >
       <div className="relative z-10 max-w-6xl mx-auto flex flex-col md:flex-row items-start justify-between gap-12 md:gap-16">
-        {/ Text Content /}
+        
         <div className="flex-1" data-aos="fade-right">
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 tracking-tight text-gray-900">
             About <span className="text-pink-600">Me</span>
@@ -43,7 +43,7 @@ export default function About() {
             I&apos;m always learning, exploring new technologies, and open to exciting challenges that push me to grow. My focus is on delivering projects with exceptional attention to detail and a commitment to clean code and responsive design. Let&apos;s collaborate and bring your ideas to life.
           </p>
 
-          {/ Stats - Enhanced with gradient text and subtle shadows /}
+          
           <div className="flex justify-start gap-8 sm:gap-12 mt-6 p-4 border-t border-b border-pink-100 bg-white shadow-inner rounded-lg">
             <div className="text-left">
               <p className="text-3xl sm:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-pink-600 to-fuchsia-600 drop-shadow-sm">
@@ -72,12 +72,12 @@ export default function About() {
           </div>
         </div>
 
-        {/ Image - Enhanced Styling /}
+        
         <motion.div
           className="w-full md:w-auto flex justify-center md:justify-end mt-8 md:mt-0 relative"
           data-aos="fade-left"
         >
-          {/ Decorative Pink Square Background /}
+          
           <div className="absolute top-4 left-4 sm:top-6 sm:left-6 w-[250px] h-[250px] sm:w-[350px] sm:h-[350px] bg-pink-200/50 rounded-2xl -z-0 transform rotate-2 shadow-2xl transition-all duration-500"></div>
           
           <Image
